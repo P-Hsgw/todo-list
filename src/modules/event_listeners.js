@@ -1,7 +1,7 @@
 import {createTodo, displayTodo} from "./todo"
 // import displayTodo from "./dom_functions"
 
-function eventListeners() {
+function initialEventListeners() {
   const firstTable = document.getElementById("tr-0")
   const modalBackground = document.getElementById("modal-background-0")
   const modalCloseButton = document.getElementById("modal-close-0")
@@ -37,4 +37,7 @@ function eventListeners() {
     toggleModal(e)
   })
 }
-export default eventListeners;
+
+
+
+export default initialEventListeners;
