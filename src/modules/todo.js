@@ -14,11 +14,11 @@ function createTodo(title, description, dueDate="10", priority="low", notes="non
 }
 
 
-// Create a function that will generate new TRs and TDs, and accept title, description etc. as an argument - 
-// this function will run in dom_functions, while displayToto diwll run in todo and just imput those arguments
 function displayTodo() {
   const todo = todos[todos.length-1]
-  createTable(todo.title, todo.description, todo.dueDate, todo.priority)
+  const i = todos.length
+  createTable(todo.title, todo.description, todo.dueDate, todo.priority, i)
+
 }
 
 
