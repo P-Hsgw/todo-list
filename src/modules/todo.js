@@ -9,13 +9,12 @@ const Todo = (title, description, dueDate, priority, notes) => {
       const table = document.getElementById(`tr-${e.currentTarget.dataset.index}`)
       todos.splice(e.currentTarget.dataset.index-1)
       table.remove()
-
     })
   }
   return {title, description, dueDate, priority, notes, eventListener}
 }
 
-function createTodo(title, description, dueDate="10", priority="low", notes="none") {
+function createTodo(title="title", description, dueDate, priority, notes="none") {
   const todo = Todo(title, description, dueDate , priority, notes)
   todos.push(todo)
   console.log(todos)

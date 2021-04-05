@@ -30,7 +30,7 @@ function initialEventListeners() {
     const description = document.getElementById(`description-${e.currentTarget.dataset.index}`).value
     const dueDate = document.getElementById(`due_date-${e.currentTarget.dataset.index}`).value
     const priority = document.getElementById(`select-${e.currentTarget.dataset.index}`).value
-    const notes = document.getElementById(`select-${e.currentTarget.dataset.index}`).value
+    const notes = document.getElementById(`notes-${e.currentTarget.dataset.index}`).value
 
     createTodo(title, description, dueDate, priority, notes)
     displayTodo()
