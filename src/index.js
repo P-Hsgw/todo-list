@@ -1,3 +1,3 @@
-import eventListeners from "./modules/load_page"
+import eventListeners from "./modules/event_listeners"
 
 eventListeners()
