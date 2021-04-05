@@ -1,0 +1,1 @@
+ToDo list created with HTML and Vanilla JavaScript. Brought to you by The Odin Project.
