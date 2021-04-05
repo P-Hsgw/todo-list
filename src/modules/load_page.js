@@ -24,11 +24,14 @@ function eventListeners() {
     toggleModal(e)
   })
 
+  // listen to class of all new TRs, and depending on a choice, display content of specific todo
   modalSubmitButton.addEventListener("click", (e) => {
     const title = document.getElementById(`title-${e.currentTarget.dataset.index}`).value
     const description = document.getElementById(`description-${e.currentTarget.dataset.index}`).value
+    const dueDate = document.getElementById(`due_date-${e.currentTarget.dataset.index}`).value
+    const priority = document.getElementById(`select-${e.currentTarget.dataset.index}`).value
 
-    createTodo(title, description)
+    createTodo(title, description, dueDate, priority)
     displayTodo()
     toggleModal(e)
   })

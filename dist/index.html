@@ -31,25 +31,23 @@
           General
         </p>
         <ul class="menu-list">
-          <li><a>Today</a></li>
+          <li><a class="is-active">Today</a></li>
           <li><a>Important</a></li>
         </ul>
         <p class="menu-label m-1">
           Projects
         </p>
         <ul class="menu-list">
-          <li><a>Team Settings</a></li>
           <li>
-            <a class="is-active" id="manage-your-team">Manage Your Team</a>
+            <a>Work</a>
             <ul>
-              <li><a>Members</a></li>
-              <li><a>Plugins</a></li>
-              <li><a>Add a member</a></li>
+              <li><a>Coworkers</a></li>
+              <li><a>Tasks</a></li>
+              <li><a>Partners</a></li>
             </ul>
           </li>
-          <li><a>Invitations</a></li>
-          <li><a>Cloud Storage Environment Settings</a></li>
-          <li><a>Authentication</a></li>
+          <li><a>Home</a></li>
+          <li><a>Shopping</a></li>
         </ul>
       </aside>
     </div>
@@ -61,21 +59,30 @@
 
         <!--- MAIN CONTENT TITLE -->
 
-        <p class="title">ToDo</p>
+        <p class="title">Today</p>
 
         <!--- TABLE WITH TASKS --->
 
         <table class="table is-hoverable">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Due date</th>
+              <th>Priority</th>
+            </tr>
+          </thead>
           <tbody id="tbody">
             <tr id="tr-0" data-index="0">
               <td>
                 Add a new task
               </td>
             </tr>
+
           </tbody>
         </table>
 
-        <!--- MODAL WITH FORM -->
+        <!--- MODAL WITH FORM TO CREATE NEW TODO -->
 
         <div class="modal has-text-white" id="modal-0">
           <div class="modal-background" id="modal-background-0" data-index="0"></div>
@@ -91,11 +98,11 @@
               <div class="field">
                 <label class="label">Description</label>
                 <div class="control has-icons-left has-icons-right">
-                  <input class="input" type="text" id="description-0" placeholder="Description input">
+                  <input class="input" type="text" id="description-0" placeholder="Description input" data-index="0">
                   <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
                   </span>
-                  <span class="icon is-small is-right">
+                  <span class="icon is-small is-right" style="display: none">
                     <i class="fas fa-check"></i>
                   </span>
                 </div>
@@ -104,7 +111,7 @@
               <div class="field">
                 <label class="label">Due Date</label>
                 <div class="control has-icons-left has-icons-right">
-                  <input class="input" type="text" placeholder="Due Date">
+                  <input class="input" type="text" placeholder="Due Date" id="due_date-0" data-index="0" value="10/04/2021">
                   <span class="icon is-small is-left">
                     <i class="fas fa-envelope"></i>
                   </span>
@@ -118,9 +125,9 @@
                 <label class="label">Priority</label>
                 <div class="control">
                   <div class="select">
-                    <select>
-                      <option>High</option>
-                      <option>Low</option>
+                    <select id="select-0" data-index="0">
+                      <option value="high">High</option>
+                      <option value="low">Low</option>
                     </select>
                   </div>
                 </div>
