@@ -1,4 +1,5 @@
 
+// Create a table with new todo
 function createTable(title, description, dueDate, priority, i) {
   const newTr = document.createElement("tr")
   const tbody = document.getElementById("tbody")
