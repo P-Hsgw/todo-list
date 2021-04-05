@@ -1,4 +1,5 @@
-import createTodo from "./todo"
+import {createTodo, displayTodo} from "./todo"
+// import displayTodo from "./dom_functions"
 
 function eventListeners() {
   const firstTable = document.getElementById("tr-0")
@@ -28,6 +29,8 @@ function eventListeners() {
     const description = document.getElementById(`description-${e.currentTarget.dataset.index}`).value
 
     createTodo(title, description)
+    displayTodo()
+    toggleModal(e)
   })
 }
 export default eventListeners;
