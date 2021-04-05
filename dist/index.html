@@ -20,10 +20,12 @@
     </div>
   </div>
 
-  <!---MENU COLUMN-->
 
   <div class="columns is-mobile">
-    <div class="column is-two-fifths-mobile is-narrow-tablet is-narrow-desktop box" style="min-height: 83vh" >
+
+    <!---MENU COLUMN-->
+
+    <div class="column is-two-fifths-mobile is-narrow-tablet is-narrow-desktop box" style="min-height: 83vh">
       <aside class="menu">
         <p class="menu-label m-1">
           General
@@ -38,7 +40,7 @@
         <ul class="menu-list">
           <li><a>Team Settings</a></li>
           <li>
-            <a class="is-active">Manage Your Team</a>
+            <a class="is-active" id="manage-your-team">Manage Your Team</a>
             <ul>
               <li><a>Members</a></li>
               <li><a>Plugins</a></li>
@@ -49,101 +51,116 @@
           <li><a>Cloud Storage Environment Settings</a></li>
           <li><a>Authentication</a></li>
         </ul>
-        <p class="menu-label">
-          Transactions
-        </p>
-        <ul class="menu-list">
-          <li><a>Payments</a></li>
-          <li><a>Transfers</a></li>
-          <li><a>Balance</a></li>
-        </ul>
       </aside>
     </div>
 
     <!--- CONTENT COLUMN -->
+
     <div class="column">
       <div class="content">
 
+        <!--- MAIN CONTENT TITLE -->
+
+        <p class="title">ToDo</p>
+
+        <!--- TABLE WITH TASKS --->
+
+        <table class="table is-hoverable">
+          <tbody>
+            <tr id="tr-0" data-index="0">
+              <td>
+                Add a new task
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Add a new task
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
         <!--- MODAL WITH FORM -->
-        <div class="modal">
-          <div class="modal-background"></div>
+
+        <div class="modal has-text-white" id="modal-0">
+          <div class="modal-background" id="modal-background-0"></div>
           <div class="modal-content">
-            <div class="field">
-              <label class="label">Title</label>
-              <div class="control">
-                <input class="input" type="text" placeholder="Title input">
+            <div class="box">
+              <div class="field">
+                <label class="label">Title</label>
+                <div class="control">
+                  <input class="input" type="text" placeholder="Title input">
+                </div>
               </div>
-            </div>
-            
-            <div class="field">
-              <label class="label">Description</label>
-              <div class="control has-icons-left has-icons-right">
-                <input class="input" type="text" placeholder="Description input">
-                <span class="icon is-small is-left">
-                  <i class="fas fa-user"></i>
-                </span>
-                <span class="icon is-small is-right">
-                  <i class="fas fa-check"></i>
-                </span>
+
+              <div class="field">
+                <label class="label">Description</label>
+                <div class="control has-icons-left has-icons-right">
+                  <input class="input" type="text" placeholder="Description input">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                  </span>
+                  <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                  </span>
+                </div>
               </div>
-            </div>
-            
-            <div class="field">
-              <label class="label">Due Date</label>
-              <div class="control has-icons-left has-icons-right">
-                <input class="input" type="text" placeholder="Due Date">
-                <span class="icon is-small is-left">
-                  <i class="fas fa-envelope"></i>
-                </span>
-                <span class="icon is-small is-right">
-                  <i class="fas fa-exclamation-triangle"></i>
-                </span>
+
+              <div class="field">
+                <label class="label">Due Date</label>
+                <div class="control has-icons-left has-icons-right">
+                  <input class="input" type="text" placeholder="Due Date">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                  <span class="icon is-small is-right">
+                    <i class="fas fa-exclamation-triangle"></i>
+                  </span>
+                </div>
               </div>
-            </div>
-            
-            <div class="field">
-              <label class="label">Priority</label>
-              <div class="control">
-                <div class="select">
-                  <select>
-                    <option>High</option>
-                    <option>Low</option>
-                  </select>
+
+              <div class="field">
+                <label class="label">Priority</label>
+                <div class="control">
+                  <div class="select">
+                    <select>
+                      <option>High</option>
+                      <option>Low</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Notes</label>
+                <div class="control">
+                  <textarea class="textarea" placeholder="Notes"></textarea>
+                </div>
+              </div>
+
+              <div class="field is-grouped">
+                <div class="control">
+                  <button class="button is-link">Submit</button>
                 </div>
               </div>
             </div>
-            
-            <div class="field">
-              <label class="label">Notes</label>
-              <div class="control">
-                <textarea class="textarea" placeholder="Notes"></textarea>
-              </div>
-            </div>
-      
-            <div class="field is-grouped">
-              <div class="control">
-                <button class="button is-link">Submit</button>
-              </div>
-            </div>
+            <button class="modal-close is-large" aria-label="close" id="modal-close-0"></button>
           </div>
-          <button class="modal-close is-large" aria-label="close"></button>
         </div>
-        <!--- MAIN CONTENT TITLE -->
-        <p class="title">ToDo</p>
-       
       </div>
     </div>
   </div>
   <footer class="footer p-4">
     <div class="content has-text-centered">
       <p>
-        Website created by Patryk Hasegawa. 
-        <span class="icon"><a href="https://github.com/P-Hsgw" target="blank"><i class="fab fa-github"></a></i></span> 
-        <span class="icon"><a href="http://linkedin.com/in/patryk-hasegawa" target="blank"><i class="fab fa-linkedin"></a></i></span>
+        Website created by Patryk Hasegawa.
+        <span class="icon"><a href="https://github.com/P-Hsgw" target="blank"><i class="fab fa-github"></a></i></span>
+        <span class="icon"><a href="http://linkedin.com/in/patryk-hasegawa" target="blank"><i
+              class="fab fa-linkedin"></a></i></span>
       </p>
     </div>
   </footer>
-
+  <script src="main.js"></script>
 </body>
 
 </html>
