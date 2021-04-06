@@ -14,7 +14,6 @@ const Todo = (title, description, dueDate, priority, notes) => {
       );
       todos.splice(e.currentTarget.dataset.index - 1, 1); // Remove todo from the array
       table.remove(); // Remove specific table with todo from the page
-      console.log(todos)
     });
 
     // Listen to specific info icon
@@ -31,7 +30,6 @@ const Todo = (title, description, dueDate, priority, notes) => {
         todos[e.currentTarget.dataset.index - 1].priority,
         todos[e.currentTarget.dataset.index - 1].notes
       );
-      console.log(e.currentTarget.dataset.index - 1)
 
       // Update button data-index to match chosen todo
       button.setAttribute("data-index", e.currentTarget.dataset.index);
@@ -41,16 +39,9 @@ const Todo = (title, description, dueDate, priority, notes) => {
 };
 
 // Create todos with Factory function and push them to the array
-function createTodo(
-  title,
-  description,
-  dueDate,
-  priority,
-  notes
-) {
+function createTodo(title, description, dueDate, priority, notes) {
   const todo = Todo(title, description, dueDate, priority, notes);
   todos.push(todo);
-  console.log(todos)
 }
 
 // Display newly created todo when called

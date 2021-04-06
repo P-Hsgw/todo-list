@@ -73,8 +73,8 @@ function populateModal(title, description, dueDate, priority, notes) {
   const todoPriority = document.getElementById("select-1").options;
   const todoNotes = document.getElementById("control-5").children[0];
 
-  todoTitle.value = title
-  todoDescription.value = description
+  todoTitle.value = title;
+  todoDescription.value = description;
   todoDueDate.value = dueDate;
   // Check wich option is chosen in todo and set it as default
   let n;
