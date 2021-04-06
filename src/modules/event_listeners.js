@@ -1,4 +1,4 @@
-import {createTodo, displayTodo} from "./todo"
+import {createTodo, displayTodo, todos} from "./todo"
 
 
 
@@ -15,7 +15,7 @@ function initialEventListeners() {
   const modalSubmitButton = document.getElementById("modal-submit-0")
   const modalTodoBackground = document.getElementById("modal-background-1")
   const modalTodoCloseButton = document.getElementById("modal-close-1")
-  const modalTodoSubmitButton = document.getElementById("modal-submit-1")
+  const modalTodoEditButton = document.getElementById("modal-submit-1")
 
   // Open a modal and let user create a todo
   firstTable.addEventListener("click", (e) => {
@@ -61,6 +61,27 @@ function initialEventListeners() {
   modalTodoCloseButton.addEventListener("click", (e) => {
     toggleModal(e)
   })
+
+  modalTodoEditButton.addEventListener("click", (e) => {
+    const title = document.getElementById("control-1").children[0].value
+    const description = document.getElementById("control-2").children[0].value
+    const dueDate = document.getElementById("control-3").children[0].value
+    const priority = document.getElementById("select-1").value;
+    const notes = document.getElementById("control-5").children[0].value
+
+
+    todos[e.currentTarget.dataset.index-1].title = title
+    todos[e.currentTarget.dataset.index-1].description = description
+    todos[e.currentTarget.dataset.index-1].dueDate = dueDate
+    todos[e.currentTarget.dataset.index-1].priority = priority
+    todos[e.currentTarget.dataset.index-1].notes = notes
+    
+    let modal = document.getElementById(`modal-1`)
+    modal.classList.toggle("is-active")    
+
+  })
+  
+
   
 
 }

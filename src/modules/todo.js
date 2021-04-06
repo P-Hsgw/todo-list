@@ -12,16 +12,17 @@ const Todo = (title, description, dueDate, priority, notes) => {
       const table = document.getElementById(
         `tr-${e.currentTarget.dataset.index}`
       );
-      todos.splice(e.currentTarget.dataset.index - 1); // Remove todo from the array
+      todos.splice(e.currentTarget.dataset.index - 1, 1); // Remove todo from the array
       table.remove(); // Remove specific table with todo from the page
+      console.log(todos)
     });
 
     // Listen to specific info icon
     const iconInfo = document.getElementById(`details-${todos.length}`);
 
     iconInfo.addEventListener("click", (e) => {
-      let modal = document.getElementById(`modal-1`);
-      // populateModal()
+      const modal = document.getElementById(`modal-1`);
+      const button = document.getElementById("modal-submit-1");
       modal.classList.toggle("is-active"); // Open modal
       populateModal(
         todos[e.currentTarget.dataset.index - 1].title,
@@ -30,6 +31,10 @@ const Todo = (title, description, dueDate, priority, notes) => {
         todos[e.currentTarget.dataset.index - 1].priority,
         todos[e.currentTarget.dataset.index - 1].notes
       );
+      console.log(e.currentTarget.dataset.index - 1)
+
+      // Update button data-index to match chosen todo
+      button.setAttribute("data-index", e.currentTarget.dataset.index);
     });
   }
   return { title, description, dueDate, priority, notes, eventListeners };
@@ -37,14 +42,15 @@ const Todo = (title, description, dueDate, priority, notes) => {
 
 // Create todos with Factory function and push them to the array
 function createTodo(
-  title = "title",
+  title,
   description,
   dueDate,
   priority,
-  notes = "none"
+  notes
 ) {
   const todo = Todo(title, description, dueDate, priority, notes);
   todos.push(todo);
+  console.log(todos)
 }
 
 // Display newly created todo when called
@@ -55,4 +61,4 @@ function displayTodo() {
   todo.eventListeners(); // Run event listener on a todo
 }
 
-export { createTodo, displayTodo };
+export { createTodo, displayTodo, todos };
