@@ -1,3 +1,3 @@
-import initialEventListeners from "./modules/event_listeners"
+import { initialEventListeners } from "./modules/event_listeners"
 
 initialEventListeners()

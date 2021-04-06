@@ -1,17 +1,21 @@
 
 // Create a table with new todo
-function createTable(title, description, dueDate, priority, i) {
+function createTable(title, description, dueDate, i) {
   const newTr = document.createElement("tr")
   const tbody = document.getElementById("tbody")
 
   const newTitle = document.createElement("td")
   const newDescription = document.createElement("td")
   const newDate = document.createElement("td")
-  const newPriority = document.createElement("td")
-  const newSpan = document.createElement("span")
-  const newIcon = document.createElement("i")
+
+  const newSpanDetails = document.createElement("span")
+  const newIconDetails = document.createElement("i")
+
+  const newSpanRemove = document.createElement("span")
+  const newIconRemove = document.createElement("i")
 
   newTr.setAttribute("id", `tr-${i}`)
+  newTr.classList.add("created-tr")
   
   newTitle.setAttribute("id", `title-${i}`)
   newTitle.setAttribute("data", `${i}`)
@@ -22,32 +26,39 @@ function createTable(title, description, dueDate, priority, i) {
   newDate.setAttribute("id", `due_date-${i}`)
   newDate.setAttribute("data", `${i}`)
 
-  newPriority.setAttribute("id", `priority-${i}`)
-  newPriority.setAttribute("data-index", `${i}`)
+  newSpanDetails.classList.add("icon")
+  newSpanDetails.classList.add("is-small")
+  newSpanDetails.classList.add("is-right")
+  newSpanDetails.setAttribute("id", `details-${i}`)
+  newSpanDetails.setAttribute("data-index", `${i}`)
+  newSpanDetails.style.margin = "12px"
 
-  newSpan.classList.add("icon")
-  newSpan.classList.add("is-small")
-  newSpan.classList.add("is-right")
-  newSpan.setAttribute("id", `span-${i}`)
-  newSpan.setAttribute("data-index", `${i}`)
-  newSpan.style.margin = "12px"
+  newIconDetails.classList.add("fas")
+  newIconDetails.classList.add("fa-info-circle")
 
-  newIcon.classList.add("fas")
-  newIcon.classList.add("fa-trash-alt")
+  newSpanRemove.classList.add("icon")
+  newSpanRemove.classList.add("is-small")
+  newSpanRemove.classList.add("is-right")
+  newSpanRemove.setAttribute("id", `remove-${i}`)
+  newSpanRemove.setAttribute("data-index", `${i}`)
+  newSpanRemove.style.margin = "12px"
+
+  newIconRemove.classList.add("fas")
+  newIconRemove.classList.add("fa-trash-alt")
 
 
   newTitle.innerHTML = title
   newDescription.innerHTML = description
   newDate.innerHTML = dueDate
-  newPriority.innerHTML = priority
 
 
   newTr.appendChild(newTitle)
   newTr.appendChild(newDescription)
   newTr.appendChild(newDate)
-  newTr.appendChild(newPriority)
-  newTr.appendChild(newSpan)
-  newSpan.appendChild(newIcon)
+  newTr.appendChild(newSpanDetails)
+  newTr.appendChild(newSpanRemove)
+  newSpanDetails.appendChild(newIconDetails)
+  newSpanRemove.appendChild(newIconRemove)
 
   tbody.appendChild(newTr)
 

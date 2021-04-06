@@ -1,16 +1,19 @@
 import {createTodo, displayTodo} from "./todo"
 
-function initialEventListeners() {
-  const firstTable = document.getElementById("tr-0")
-  const modalBackground = document.getElementById("modal-background-0")
-  const modalCloseButton = document.getElementById("modal-close-0")
-  const modalSubmitButton = document.getElementById("modal-submit-0")
 
+
+function initialEventListeners() {
   // Open and close modal
   function toggleModal (e) {
     let modal = document.getElementById(`modal-${e.currentTarget.dataset.index}`)
     modal.classList.toggle("is-active")
   }
+
+  const firstTable = document.getElementById("tr-0")
+  const modalBackground = document.getElementById("modal-background-0")
+  const modalCloseButton = document.getElementById("modal-close-0")
+  const modalSubmitButton = document.getElementById("modal-submit-0")
+
 
   // Open a modal and let user create a todo
   firstTable.addEventListener("click", (e) => {
@@ -50,4 +53,5 @@ function initialEventListeners() {
 
 
 
-export default initialEventListeners;
+
+export {initialEventListeners};

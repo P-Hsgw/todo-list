@@ -69,7 +69,7 @@
               <th>Title</th>
               <th>Description</th>
               <th>Due date</th>
-              <th>Priority</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody id="tbody">
@@ -84,7 +84,7 @@
 
         <!--- MODAL WITH FORM TO CREATE NEW TODO -->
 
-        <div class="modal has-text-white" id="modal-0">
+        <div class="modal" id="modal-0">
           <div class="modal-background" id="modal-background-0" data-index="0"></div>
           <div class="modal-content">
             <div class="box" id="modal-box-0">
@@ -149,6 +149,77 @@
             <button class="modal-close is-large" aria-label="close" id="modal-close-0" data-index="0"></button>
           </div>
         </div>
+
+        <!--- END OF MODAL -->
+
+        <!--- MODAL WITH TASK --->
+
+        <div class="modal" id="modal-1">
+          <div class="modal-background" id="modal-background-1" data-index="1"></div>
+          <div class="modal-content">
+            <div class="box" id="modal-box-1">
+              <div class="field">
+                <label class="label">Title</label>
+                <div class="control" id="control-1">
+                  <input class="input" name="title" type="text" id="title-1" placeholder="Title input" data-index="1">
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Description</label>
+                <div class="control has-icons-left has-icons-right">
+                  <input class="input" type="text" id="description-1" placeholder="Description input" data-index="1">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                  </span>
+                  <span class="icon is-small is-right" style="display: none">
+                    <i class="fas fa-check"></i>
+                  </span>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Due Date</label>
+                <div class="control has-icons-left has-icons-right">
+                  <input class="input" type="text" placeholder="Due Date" id="due_date-1" data-index="1" value="10/04/2021">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                  <span class="icon is-small is-right">
+                    <i class="fas fa-exclamation-triangle"></i>
+                  </span>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Priority</label>
+                <div class="control">
+                  <div class="select">
+                    <select id="select-1" data-index="1">
+                      <option value="low">Low</option>
+                      <option value="high">High</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Notes</label>
+                <div class="control">
+                  <textarea class="textarea" placeholder="Notes" id="notes-1"></textarea>
+                </div>
+              </div>
+
+              <div class="field is-grouped">
+                <div class="control">
+                  <button class="button is-link" id="modal-submit-1" data-index="1">Submit</button>
+                </div>
+              </div>
+            </div>
+            <button class="modal-close is-large" aria-label="close" id="modal-close-1" data-index="1"></button>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
