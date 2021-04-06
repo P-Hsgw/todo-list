@@ -14,7 +14,6 @@ const Todo = (title, description, dueDate, priority, notes) => {
       const table = document.getElementById(`tr-${e.currentTarget.dataset.index}`);
       todos.splice(e.currentTarget.dataset.index - 1); // Remove todo from the array
       table.remove(); // Remove specific table with todo from the page
-      testuwka()
     });
 
     // Listen to specific info icon

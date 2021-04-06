@@ -14,6 +14,9 @@ function createTable(title, description, dueDate, i) {
   const newSpanRemove = document.createElement("span")
   const newIconRemove = document.createElement("i")
 
+  const newA1 = document.createElement("a")
+  const newA2 = document.createElement("a")
+
   newTr.setAttribute("id", `tr-${i}`)
   newTr.classList.add("created-tr")
   
@@ -57,8 +60,10 @@ function createTable(title, description, dueDate, i) {
   newTr.appendChild(newDate)
   newTr.appendChild(newSpanDetails)
   newTr.appendChild(newSpanRemove)
-  newSpanDetails.appendChild(newIconDetails)
-  newSpanRemove.appendChild(newIconRemove)
+  newSpanDetails.appendChild(newA1)
+  newSpanRemove.appendChild(newA2)
+  newA1.appendChild(newIconDetails)
+  newA2.appendChild(newIconRemove)
 
   tbody.appendChild(newTr)
 
