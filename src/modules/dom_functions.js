@@ -69,4 +69,20 @@ function createTable(title, description, dueDate, i) {
 
 }
 
-export default createTable
+// Fill a modal 1 with data taken from todos variable, depending on a button choice
+function populateModal(title, description, dueDate, priority, notes) {
+  let todoTitle = document.getElementById("control-1").children[0]
+  const todoDescription = document.getElementById("control-2").children[0]
+  const todoDueDate = document.getElementById("control-3").children[0]
+  const todoPriority = document.getElementById("select-1").children[0]
+  const todoNotes = document.getElementById("control-5").children[0]
+
+
+  todoTitle.setAttribute('value', title)
+  todoDescription.setAttribute("value", description)
+  todoDueDate.setAttribute("value", dueDate)
+  todoPriority.setAttribute("value", priority)
+  todoNotes.setAttribute("value", notes)
+}
+
+export { createTable, populateModal }

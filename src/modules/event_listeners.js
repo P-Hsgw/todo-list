@@ -13,19 +13,21 @@ function initialEventListeners() {
   const modalBackground = document.getElementById("modal-background-0")
   const modalCloseButton = document.getElementById("modal-close-0")
   const modalSubmitButton = document.getElementById("modal-submit-0")
-
+  const modalTodoBackground = document.getElementById("modal-background-1")
+  const modalTodoCloseButton = document.getElementById("modal-close-1")
+  const modalTodoSubmitButton = document.getElementById("modal-submit-1")
 
   // Open a modal and let user create a todo
   firstTable.addEventListener("click", (e) => {
     toggleModal(e)
   })
 
-  // Let user close a modal on a background click
+  // Let user close a modal with table on a background click
   modalBackground.addEventListener("click", (e) => {
     toggleModal(e)
   })
 
-  // Let user close a modal on a button click
+  // Let user close a modal with table on a button click
   modalCloseButton.addEventListener("click", (e) => {
     toggleModal(e)
   })
@@ -49,6 +51,18 @@ function initialEventListeners() {
     document.getElementById(`select-${e.currentTarget.dataset.index}`).value
     document.getElementById(`notes-${e.currentTarget.dataset.index}`).value = ""
   })
+
+  // Let user close a modal with content on a background click 
+  modalTodoBackground.addEventListener("click", (e) => {
+    toggleModal(e)
+  })
+
+  // Let user close a modal with content on a button click
+  modalTodoCloseButton.addEventListener("click", (e) => {
+    toggleModal(e)
+  })
+  
+
 }
 
 

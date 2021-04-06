@@ -1,27 +1,36 @@
-import createTable from "./dom_functions";
+import { createTable, populateModal } from "./dom_functions";
 
 // Store todos in array
 let todos = [];
 
 // Create todos with factory functions
 const Todo = (title, description, dueDate, priority, notes) => {
-
-
-  function eventListeners() { 
+  function eventListeners() {
     // Listen to specific remove icon
-    const iconRemove = document.getElementById(`remove-${todos.length}`); 
+    const iconRemove = document.getElementById(`remove-${todos.length}`);
     iconRemove.addEventListener("click", (e) => {
-      const table = document.getElementById(`tr-${e.currentTarget.dataset.index}`);
+      const table = document.getElementById(
+        `tr-${e.currentTarget.dataset.index}`
+      );
       todos.splice(e.currentTarget.dataset.index - 1); // Remove todo from the array
       table.remove(); // Remove specific table with todo from the page
     });
 
     // Listen to specific info icon
-    const iconInfo = document.getElementById(`details-${todos.length}`)
-    iconInfo.addEventListener("click", () => {
-      let modal = document.getElementById(`modal-1`) 
-      modal.classList.toggle("is-active") // Open modal
-    })
+    const iconInfo = document.getElementById(`details-${todos.length}`);
+
+    iconInfo.addEventListener("click", (e) => {
+      let modal = document.getElementById(`modal-1`);
+      // populateModal()
+      modal.classList.toggle("is-active"); // Open modal
+      populateModal(
+        todos[e.currentTarget.dataset.index - 1].title,
+        todos[e.currentTarget.dataset.index - 1].description,
+        todos[e.currentTarget.dataset.index - 1].dueDate,
+        todos[e.currentTarget.dataset.index - 1].priority,
+        todos[e.currentTarget.dataset.index - 1].notes
+      );
+    });
   }
   return { title, description, dueDate, priority, notes, eventListeners };
 };
