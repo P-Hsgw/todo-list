@@ -74,15 +74,22 @@ function populateModal(title, description, dueDate, priority, notes) {
   let todoTitle = document.getElementById("control-1").children[0]
   const todoDescription = document.getElementById("control-2").children[0]
   const todoDueDate = document.getElementById("control-3").children[0]
-  const todoPriority = document.getElementById("select-1").children[0]
+  const todoPriority = document.getElementById("select-1").options
   const todoNotes = document.getElementById("control-5").children[0]
 
 
   todoTitle.setAttribute('value', title)
   todoDescription.setAttribute("value", description)
   todoDueDate.setAttribute("value", dueDate)
-  todoPriority.setAttribute("value", priority)
-  todoNotes.setAttribute("value", notes)
+  // Check wich option is chosen in todo and set it as default
+  let n;
+  for (n = 0; n < todoPriority.length; ++n) {
+    if (todoPriority[n].value === priority) {
+        todoPriority[n].defaultSelected = true;
+        break;
+    }
+  }
+  todoNotes.innerHTML = notes
 }
 
 export { createTable, populateModal }
