@@ -12,7 +12,8 @@ const Todo = (title, description, dueDate, priority, notes) => {
       const table = document.getElementById(
         `tr-${e.currentTarget.dataset.index}`
       );
-      todos.splice(e.currentTarget.dataset.index - 1, 1); // Remove todo from the array
+      // todos.splice(e.currentTarget.dataset.index - 1); // Remove todo from the array 
+      delete todos [e.currentTarget.dataset.index - 1]; // Remove todo from the array - solution for not working arrays
       table.remove(); // Remove specific table with todo from the page
     });
 
