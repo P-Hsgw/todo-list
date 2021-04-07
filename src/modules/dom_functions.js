@@ -77,11 +77,11 @@ function populateModal(title, description, dueDate, priority, notes) {
   todoDescription.value = description;
   todoDueDate.value = dueDate;
   // Check wich option is chosen in todo and set it as default
-  let n;
-  for (n = 0; n < todoPriority.length; ++n) {
+  for (let n = 0; n < todoPriority.length; ++n) {
     if (todoPriority[n].value === priority) {
       todoPriority[n].defaultSelected = true;
-      break;
+    } else  {
+      todoPriority[n].defaultSelected = false;
     }
   }
   todoNotes.value = notes;

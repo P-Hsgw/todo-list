@@ -80,7 +80,6 @@ function initialEventListeners() {
     title.innerHTML = todos[`${e-1}`].title
     description.innerHTML = todos[`${e-1}`].description
     dueDate.innerHTML = todos[`${e-1}`].dueDate
-
   }
 
   // Let user edit specific todo by editing form in a modal
@@ -101,6 +100,7 @@ function initialEventListeners() {
 
     let modal = document.getElementById(`modal-1`);
     modal.classList.toggle("is-active");
+
 
   });
 
