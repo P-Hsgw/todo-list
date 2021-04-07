@@ -30,6 +30,7 @@ const Todo = (title, description, dueDate, priority, notes) => {
         todos[e.currentTarget.dataset.index - 1].priority,
         todos[e.currentTarget.dataset.index - 1].notes
       );
+      console.log(todos)
 
       // Update button data-index to match chosen todo
       button.setAttribute("data-index", e.currentTarget.dataset.index);
