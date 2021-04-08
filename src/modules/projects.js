@@ -1,7 +1,7 @@
 import { populateModal } from "./dom_functions";
 import { toggleModal } from "./event_listeners";
 
-// Function that will remove current project
+// Remove current project
 function removeProject() {
   let contentColumn = document.getElementById("content_column");
   let firstChild = contentColumn.firstElementChild;
@@ -11,7 +11,7 @@ function removeProject() {
   }
 }
 
-// Function that will create a column taking data-index as an argument
+// Create a column taking data-index as an argument
 function createProject(index) {
   const column = document.getElementById("content_column");
 
@@ -82,7 +82,43 @@ function createProject(index) {
 // Function that will populate the project depending on dataset.index
 function populateProject() {}
 
-// Function that will create a new project tab
-function createProjectTab() {}
+// Create a new project tab in menu bar
 
-export { removeProject, createProject };
+function getProjectDetails () {
+  const projects = document.getElementById("add_new")
+  const field = document.createElement("div")
+  const control = document.createElement("div")
+  const input = document.createElement("input")
+  const button = document.createElement("button")
+
+  field.classList.add("field")
+  control.classList.add("control")
+  input.classList.add("input")
+  input.setAttribute("type", "text")
+  input.setAttribute("placeholder", "Project name")
+  button.classList.add("button")
+  button.classList.add("is-primary")
+  button.innerHTML = "Add"
+
+  projects.prepend(field)
+
+  field.appendChild(control)
+  control.appendChild(input)
+  control.appendChild(button)
+
+  
+  button.addEventListener("click", () => {console.log("elo")})
+
+}
+
+function createProjectTab() {
+  const projects = document.getElementById("created_projects")
+  const li = document.createElement("li")
+  const a = document.createElement("a")
+
+  projects.appendChild(li)
+  li.appendChild(a)
+
+}
+
+export { removeProject, createProject, getProjectDetails };

@@ -37,17 +37,12 @@
         <p class="menu-label m-1">
           Projects
         </p>
-        <ul class="menu-list">
-          <li>
-            <a>Work</a>
-            <ul>
-              <li><a>Coworkers</a></li>
-              <li><a>Tasks</a></li>
-              <li><a>Partners</a></li>
-            </ul>
-          </li>
+        <ul class="menu-list" id="created_projects">
           <li><a>Home</a></li>
           <li><a>Shopping</a></li>
+          <li id="add_new">
+            <a class="has-text-info" id="add_new_project">Add new Project <span class="icon is-right"><i class="fas fa-plus-circle"></i></span></a>
+          </li>
         </ul>
       </aside>
     </div>
@@ -87,6 +82,7 @@
       </div>
     </div>
   </div>
+
   <!--- MODAL WITH FORM TO CREATE NEW TODO -->
 
   <div class="modal" id="modal-0">

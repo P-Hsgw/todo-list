@@ -1,5 +1,5 @@
 import { createTodo, displayTodo, todos } from "./todo";
-import { removeProject, createProject } from "./projects";
+import { removeProject, createProject, getProjectDetails } from "./projects";
 
 function toggleModal(e) {
   let modal = document.getElementById(`modal-${e.currentTarget.dataset.index}`);
@@ -17,6 +17,7 @@ function initialEventListeners() {
   const modalTodoCloseButton = document.getElementById("modal-close-1");
   const modalTodoEditButton = document.getElementById("modal-submit-1");
   const projectsTab = document.querySelectorAll(".project");
+  const addNewProject = document.getElementById("add_new_project")
 
   // Open a modal and let user create a todo
   firstTable.addEventListener("click", (e) => {
@@ -133,6 +134,14 @@ function initialEventListeners() {
       // Rendering function will need to take todos array and return only arrays with specific dataset.index
     });
   }
+
+  addNewProject.addEventListener("click", () => {
+    getProjectDetails()
+  })
+  
+
+
+
 }
 
 export { initialEventListeners, toggleModal };
