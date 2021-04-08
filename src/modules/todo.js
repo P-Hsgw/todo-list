@@ -12,8 +12,8 @@ const Todo = (title, description, dueDate, priority, notes) => {
       const table = document.getElementById(
         `tr-${e.currentTarget.dataset.index}`
       );
-      // todos.splice(e.currentTarget.dataset.index - 1); // Remove todo from the array 
-      delete todos [e.currentTarget.dataset.index - 1]; // Remove todo from the array - solution for not working arrays
+      // todos.splice(e.currentTarget.dataset.index - 1); // Remove todo from the array
+      delete todos[e.currentTarget.dataset.index - 1]; // Remove todo from the array - solution for not working arrays
       table.remove(); // Remove specific table with todo from the page
     });
 
@@ -31,7 +31,7 @@ const Todo = (title, description, dueDate, priority, notes) => {
         todos[e.currentTarget.dataset.index - 1].priority,
         todos[e.currentTarget.dataset.index - 1].notes
       );
-      console.log(todos)
+      console.log(todos);
 
       // Update button data-index to match chosen todo
       button.setAttribute("data-index", e.currentTarget.dataset.index);

@@ -80,7 +80,7 @@ function populateModal(title, description, dueDate, priority, notes) {
   for (let n = 0; n < todoPriority.length; ++n) {
     if (todoPriority[n].value === priority) {
       todoPriority[n].defaultSelected = true;
-    } else  {
+    } else {
       todoPriority[n].defaultSelected = false;
     }
   }
