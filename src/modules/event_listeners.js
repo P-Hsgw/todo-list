@@ -1,14 +1,17 @@
 import { createTodo, displayTodo, todos } from "./todo";
 import { removeProject, createProject } from "./projects"
 
+
+function toggleModal(e) {
+  let modal = document.getElementById(
+    `modal-${e.currentTarget.dataset.index}`
+  );
+  modal.classList.toggle("is-active");
+}
+
 function initialEventListeners() {
   // Open and close modal
-  function toggleModal(e) {
-    let modal = document.getElementById(
-      `modal-${e.currentTarget.dataset.index}`
-    );
-    modal.classList.toggle("is-active");
-  }
+
 
   const firstTable = document.getElementById("tr-0");
   const modalBackground = document.getElementById("modal-background-0");
@@ -107,7 +110,7 @@ function initialEventListeners() {
   for (let project of projectsTab) {
     project.addEventListener("click", (e) => {
       removeProject()
-      createProject()
+      createProject(e)
 
       console.log(e.target.dataset.index)
       // Create a function that will remove current project
@@ -116,8 +119,6 @@ function initialEventListeners() {
     })
   }
 
-
-
 }
 
-export { initialEventListeners };
+export { initialEventListeners, toggleModal };

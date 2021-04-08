@@ -1,4 +1,5 @@
 import { populateModal } from "./dom_functions";
+import { toggleModal } from "./event_listeners"
 
 // Function that will remove current project
 function removeProject() {
@@ -11,12 +12,13 @@ function removeProject() {
 }
 
 // Function that will create a column taking data-index as an argument
-function createProject() {
+function createProject(index) {
   const column = document.getElementById("content_column")
 
   const content = document.createElement("div") 
 
   const title = document.createElement("p")
+  const projectTitle = document.getElementById(`project-${index.target.dataset.index}`)
 
   const table = document.createElement("table")
   const thead = document.createElement("thead")
@@ -36,7 +38,7 @@ function createProject() {
   content.classList.add("content")
 
   title.classList.add("title")
-  // title.innerHTML = ""
+  title.innerHTML = projectTitle.innerHTML
 
   table.classList.add("table")
   table.classList.add("is-hoverable")
@@ -67,6 +69,12 @@ function createProject() {
   table.appendChild(tBody)
   tBody.appendChild(trNewTask)
   trNewTask.appendChild(tdNewTask)
+
+  const firstTable = document.getElementById("tr-0");
+
+  firstTable.addEventListener("click", (e) => {
+    toggleModal(e);
+  });
 }
 
 // Function that will populate the project depending on dataset.index
