@@ -1,7 +1,11 @@
 // Function that will remove current project
 function removeProject() {
-  
-
+    var contentColumn = document.getElementById("content_column");
+    var firstChild = contentColumn.firstElementChild;
+    while (firstChild) {
+      firstChild.remove();
+      firstChild = contentColumn.firstElementChild;
+    }
 }
 
 // Function that will create a column 
@@ -18,3 +22,5 @@ function populateProject() {
 function createProjectTab() {
 
 }
+
+export default removeProject
