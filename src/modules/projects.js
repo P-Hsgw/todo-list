@@ -86,31 +86,40 @@ function populateProject() {}
 
 function getProjectDetails () {
   const projects = document.getElementById("add_new")
-  const field = document.createElement("div")
-  const control = document.createElement("div")
+  const fieldInput = document.createElement("div")
+  const controlInput = document.createElement("div")
   const input = document.createElement("input")
-  const button = document.createElement("button")
+  const fieldButtons = document.createElement("div")
+  const controlButtons = document.createElement("div")
+  const submitButton = document.createElement("button")
+  
 
-  field.classList.add("field")
-  control.classList.add("control")
+  fieldInput.classList.add("field")
+  controlInput.classList.add("control")
   input.classList.add("input")
   input.setAttribute("type", "text")
   input.setAttribute("placeholder", "Project name")
-  button.classList.add("button")
-  button.classList.add("is-primary")
-  button.innerHTML = "Add"
-
-  projects.prepend(field)
-
-  field.appendChild(control)
-  control.appendChild(input)
-  control.appendChild(button)
-
+  fieldButtons.classList.add("field")
+  controlButtons.classList.add("control")
+  submitButton.classList.add("button")
+  submitButton.classList.add("is-primary")
+  submitButton.innerHTML = "Add"
   
-  button.addEventListener("click", () => {console.log("elo")})
+  projects.prepend(fieldButtons)
+  projects.prepend(fieldInput)
+
+  fieldInput.appendChild(controlInput)
+  controlInput.appendChild(input)
+
+  fieldButtons.appendChild(controlButtons)
+  controlButtons.appendChild(submitButton)
+
+  // Listen to a submit button
+  submitButton.addEventListener("click", () => {console.log("elo")})
 
 }
 
+// Projects should also be an object, and they should be pushed into an array
 function createProjectTab() {
   const projects = document.getElementById("created_projects")
   const li = document.createElement("li")

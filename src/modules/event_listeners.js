@@ -142,12 +142,7 @@ function initialEventListeners() {
       getProjectDetails()
       newProjectOpen = true
     }
-    
   })
-  
-
-
-
 }
 
 export { initialEventListeners, toggleModal };
