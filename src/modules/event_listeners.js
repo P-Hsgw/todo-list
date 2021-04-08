@@ -107,10 +107,22 @@ function initialEventListeners() {
     modal.classList.toggle("is-active");
   });
 
+  function removeActive() {
+    for (let i=0; i < projectsTab.length; i++) {
+      projectsTab[i].classList.remove("is-active")
+    }
+  }
+
   for (let project of projectsTab) {
     project.addEventListener("click", (e) => {
       removeProject()
       createProject(e)
+      removeActive()
+
+      if (e.target) {
+        e.target.classList.add("is-active")
+      }
+
 
       console.log(e.target.dataset.index)
       // Create a function that will remove current project
