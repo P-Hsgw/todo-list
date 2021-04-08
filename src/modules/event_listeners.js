@@ -122,7 +122,7 @@ function initialEventListeners() {
   }
 
   // Listen to each project button, and run functions on click
-  for (let project of projectsTab) {
+    for (let project of projectsTab) {
     project.addEventListener("click", (e) => {
       removeProject(); // Remove all projects from column
       createProject(e); // Creates new projects
@@ -143,6 +143,9 @@ function initialEventListeners() {
       newProjectOpen = true
     }
   })
+
+
+  
 }
 
 export { initialEventListeners, toggleModal };

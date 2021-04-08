@@ -1,4 +1,4 @@
-import { populateModal } from "./dom_functions";
+// import { populateModal } from "./dom_functions";
 import { toggleModal } from "./event_listeners";
 
 // Remove current project
@@ -84,8 +84,26 @@ function populateProject() {}
 
 // Create a new project tab in menu bar
 
+// Projects should also be an object, and they should be pushed into an array
+
+function renderProjectTab(value) {
+  const projects = document.getElementById("created_projects")
+  const li = document.createElement("li")
+  const a = document.createElement("a")
+
+
+  a.classList.add("project")
+
+  projects.prepend(li)
+  li.appendChild(a)
+  a.innerHTML = value;
+
+}
+
+
 function getProjectDetails () {
   const projects = document.getElementById("add_new")
+  const div = document.createElement("div")
   const fieldInput = document.createElement("div")
   const controlInput = document.createElement("div")
   const input = document.createElement("input")
@@ -94,19 +112,22 @@ function getProjectDetails () {
   const submitButton = document.createElement("button")
   
 
+  div.setAttribute("id", "form-wrapper")
   fieldInput.classList.add("field")
   controlInput.classList.add("control")
   input.classList.add("input")
   input.setAttribute("type", "text")
   input.setAttribute("placeholder", "Project name")
+  input.setAttribute("id", "input-0")
   fieldButtons.classList.add("field")
   controlButtons.classList.add("control")
   submitButton.classList.add("button")
   submitButton.classList.add("is-primary")
   submitButton.innerHTML = "Add"
   
-  projects.prepend(fieldButtons)
-  projects.prepend(fieldInput)
+  projects.prepend(div)
+  div.appendChild(fieldInput)
+  div.appendChild(fieldButtons)
 
   fieldInput.appendChild(controlInput)
   controlInput.appendChild(input)
@@ -115,19 +136,14 @@ function getProjectDetails () {
   controlButtons.appendChild(submitButton)
 
   // Listen to a submit button
-  submitButton.addEventListener("click", () => {console.log("elo")})
+  submitButton.addEventListener("click", () => {
+    renderProjectTab(input.value)
+    projects.childNodes[0].remove()
+    
+    
+  })
 
 }
 
-// Projects should also be an object, and they should be pushed into an array
-function createProjectTab() {
-  const projects = document.getElementById("created_projects")
-  const li = document.createElement("li")
-  const a = document.createElement("a")
-
-  projects.appendChild(li)
-  li.appendChild(a)
-
-}
 
 export { removeProject, createProject, getProjectDetails };
