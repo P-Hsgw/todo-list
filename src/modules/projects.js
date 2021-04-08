@@ -1,5 +1,9 @@
 // import { populateModal } from "./dom_functions";
-import { toggleModal } from "./event_listeners";
+import { toggleModal, removeActive, addActive } from "./event_listeners";
+
+let projectsArray = []
+
+
 
 // Remove current project
 function removeProject() {
@@ -79,6 +83,29 @@ function createProject(index) {
   });
 }
 
+function Project(name) {
+  const eventListeners = () => {
+    const projectsTab = document.querySelectorAll(".project");
+    for (let project of projectsTab) {
+      project.addEventListener("click", (e) => {
+        removeProject(); // Remove all projects from column
+        createProject(e); // Creates new projects
+        removeActive();
+        addActive(e);
+  
+        // Create a function to render a projectTab depending on dataset.index
+        // Rendering function will need to take todos array and return only arrays with specific dataset.index
+      });
+    }
+  }
+  return { name, eventListeners }
+}
+
+function pushProjects(name) {
+  const project = Project(name)
+  projectsArray.push(project)
+}
+
 // Function that will populate the project depending on dataset.index
 function populateProject() {}
 
@@ -86,18 +113,21 @@ function populateProject() {}
 
 // Projects should also be an object, and they should be pushed into an array
 
-function renderProjectTab(value) {
+function renderProjectTab(i, value) {
   const projects = document.getElementById("created_projects")
   const li = document.createElement("li")
   const a = document.createElement("a")
 
 
   a.classList.add("project")
+  a.setAttribute("data-index", i)
+  a.setAttribute("id", `project-${i}`)
 
-  projects.prepend(li)
+  projects.appendChild(li)
   li.appendChild(a)
   a.innerHTML = value;
 
+  
 }
 
 
@@ -137,10 +167,12 @@ function getProjectDetails () {
 
   // Listen to a submit button
   submitButton.addEventListener("click", () => {
-    renderProjectTab(input.value)
+    pushProjects(input.value)
+    const project = projectsArray[projectsArray.length - 1]
+    renderProjectTab(projectsArray.length +1, project.name)
     projects.childNodes[0].remove()
-    
-    
+    project.eventListeners()
+    console.log(projectsArray)
   })
 
 }
