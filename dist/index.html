@@ -31,8 +31,8 @@
           General
         </p>
         <ul class="menu-list">
-          <li><a class="is-active">Today</a></li>
-          <li><a>Important</a></li>
+          <li><a class="is-active project" data-index="0">Today</a></li>
+          <li><a class="project" data-index="1">Important</a></li>
         </ul>
         <p class="menu-label m-1">
           Projects
@@ -82,135 +82,136 @@
           </tbody>
         </table>
 
-        <!--- MODAL WITH FORM TO CREATE NEW TODO -->
 
-        <div class="modal" id="modal-0">
-          <div class="modal-background" id="modal-background-0" data-index="0"></div>
-          <div class="modal-content">
-            <div class="box" id="modal-box-0">
-              <div class="field">
-                <label class="label">Title</label>
-                <div class="control" id="control-0">
-                  <input class="input" name="title" type="text" id="title-0" placeholder="Title input" data-index="0">
-                </div>
-              </div>
-
-              <div class="field">
-                <label class="label">Description</label>
-                <div class="control has-icons-left has-icons-right">
-                  <input class="input" type="text" id="description-0" placeholder="Description input" data-index="0">
-                  <span class="icon is-small is-left">
-                    <i class="fas fa-user"></i>
-                  </span>
-                  <span class="icon is-small is-right" style="display: none">
-                    <i class="fas fa-check"></i>
-                  </span>
-                </div>
-              </div>
-
-              <div class="field">
-                <label class="label">Due Date</label>
-                <div class="control">
-                  <input class="input" type="date" placeholder="Due Date" id="due_date-0" data-index="0">
-                </div>
-              </div>
-
-              <div class="field">
-                <label class="label">Priority</label>
-                <div class="control">
-                  <div class="select">
-                    <select id="select-0" data-index="0">
-                      <option value="low">Low</option>
-                      <option value="high">High</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <div class="field">
-                <label class="label">Notes</label>
-                <div class="control">
-                  <textarea class="textarea" placeholder="Notes" id="notes-0"></textarea>
-                </div>
-              </div>
-
-              <div class="field is-grouped">
-                <div class="control">
-                  <button class="button is-link" id="modal-submit-0" data-index="0">Submit</button>
-                </div>
-              </div>
-            </div>
-            <button class="modal-close is-large" aria-label="close" id="modal-close-0" data-index="0"></button>
-          </div>
-        </div>
-
-        <!--- END OF MODAL -->
-
-        <!--- MODAL WITH TASK --->
-
-        <div class="modal" id="modal-1">
-          <div class="modal-background" id="modal-background-1" data-index="1"></div>
-          <div class="modal-content">
-            <div class="box" id="modal-box-1">
-              <div class="field">
-                <label class="label">Title</label>
-                <div class="control" id="control-1">
-                  <input class="input" name="title" type="text" id="title-1" placeholder="Title input" data-index="1">
-                </div>
-              </div>
-
-              <div class="field">
-                <label class="label">Description</label>
-                <div class="control has-icons-left has-icons-right" id="control-2">
-                  <input class="input" type="text" id="description-1" placeholder="Description input" data-index="1">
-                  <span class="icon is-small is-left">
-                    <i class="fas fa-user"></i>
-                  </span>
-                  <span class="icon is-small is-right" style="display: none">
-                    <i class="fas fa-check"></i>
-                  </span>
-                </div>
-              </div>
-
-              <div class="field">
-                <label class="label">Due Date</label>
-                <div class="control" id="control-3">
-                  <input class="input" type="date" placeholder="Due Date" id="due_date-1" data-index="1">
-                </div>
-              </div>
-
-              <div class="field">
-                <label class="label">Priority</label>
-                <div class="control" id="control-4">
-                  <div class="select">
-                    <select id="select-1" data-index="1">
-                      <option value="low">Low</option>
-                      <option value="high">High</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <div class="field">
-                <label class="label">Notes</label>
-                <div class="control" id="control-5">
-                  <textarea class="textarea" placeholder="Notes" id="notes-1"></textarea>
-                </div>
-              </div>
-
-              <div class="field is-grouped">
-                <div class="control">
-                  <button class="button is-link is-success" id="modal-submit-1" data-index="1">Save</button>
-                </div>
-              </div>
-            </div>
-            <button class="modal-close is-large" aria-label="close" id="modal-close-1" data-index="1"></button>
-          </div>
-        </div>
 
       </div>
     </div>
   </div>
+          <!--- MODAL WITH FORM TO CREATE NEW TODO -->
+
+          <div class="modal" id="modal-0">
+            <div class="modal-background" id="modal-background-0" data-index="0"></div>
+            <div class="modal-content">
+              <div class="box" id="modal-box-0">
+                <div class="field">
+                  <label class="label">Title</label>
+                  <div class="control" id="control-0">
+                    <input class="input" name="title" type="text" id="title-0" placeholder="Title input" data-index="0">
+                  </div>
+                </div>
+  
+                <div class="field">
+                  <label class="label">Description</label>
+                  <div class="control has-icons-left has-icons-right">
+                    <input class="input" type="text" id="description-0" placeholder="Description input" data-index="0">
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-user"></i>
+                    </span>
+                    <span class="icon is-small is-right" style="display: none">
+                      <i class="fas fa-check"></i>
+                    </span>
+                  </div>
+                </div>
+  
+                <div class="field">
+                  <label class="label">Due Date</label>
+                  <div class="control">
+                    <input class="input" type="date" placeholder="Due Date" id="due_date-0" data-index="0">
+                  </div>
+                </div>
+  
+                <div class="field">
+                  <label class="label">Priority</label>
+                  <div class="control">
+                    <div class="select">
+                      <select id="select-0" data-index="0">
+                        <option value="low">Low</option>
+                        <option value="high">High</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="field">
+                  <label class="label">Notes</label>
+                  <div class="control">
+                    <textarea class="textarea" placeholder="Notes" id="notes-0"></textarea>
+                  </div>
+                </div>
+  
+                <div class="field is-grouped">
+                  <div class="control">
+                    <button class="button is-link" id="modal-submit-0" data-index="0">Submit</button>
+                  </div>
+                </div>
+              </div>
+              <button class="modal-close is-large" aria-label="close" id="modal-close-0" data-index="0"></button>
+            </div>
+          </div>
+  
+          <!--- END OF MODAL -->
+  
+          <!--- MODAL WITH TASK --->
+  
+          <div class="modal" id="modal-1">
+            <div class="modal-background" id="modal-background-1" data-index="1"></div>
+            <div class="modal-content">
+              <div class="box" id="modal-box-1">
+                <div class="field">
+                  <label class="label">Title</label>
+                  <div class="control" id="control-1">
+                    <input class="input" name="title" type="text" id="title-1" placeholder="Title input" data-index="1">
+                  </div>
+                </div>
+  
+                <div class="field">
+                  <label class="label">Description</label>
+                  <div class="control has-icons-left has-icons-right" id="control-2">
+                    <input class="input" type="text" id="description-1" placeholder="Description input" data-index="1">
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-user"></i>
+                    </span>
+                    <span class="icon is-small is-right" style="display: none">
+                      <i class="fas fa-check"></i>
+                    </span>
+                  </div>
+                </div>
+  
+                <div class="field">
+                  <label class="label">Due Date</label>
+                  <div class="control" id="control-3">
+                    <input class="input" type="date" placeholder="Due Date" id="due_date-1" data-index="1">
+                  </div>
+                </div>
+  
+                <div class="field">
+                  <label class="label">Priority</label>
+                  <div class="control" id="control-4">
+                    <div class="select">
+                      <select id="select-1" data-index="1">
+                        <option value="low">Low</option>
+                        <option value="high">High</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="field">
+                  <label class="label">Notes</label>
+                  <div class="control" id="control-5">
+                    <textarea class="textarea" placeholder="Notes" id="notes-1"></textarea>
+                  </div>
+                </div>
+  
+                <div class="field is-grouped">
+                  <div class="control">
+                    <button class="button is-link is-success" id="modal-submit-1" data-index="1">Save</button>
+                  </div>
+                </div>
+              </div>
+              <button class="modal-close is-large" aria-label="close" id="modal-close-1" data-index="1"></button>
+            </div>
+          </div>
   
   <!--- FOOTER --->
 

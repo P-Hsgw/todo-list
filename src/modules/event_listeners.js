@@ -16,6 +16,7 @@ function initialEventListeners() {
   const modalTodoBackground = document.getElementById("modal-background-1");
   const modalTodoCloseButton = document.getElementById("modal-close-1");
   const modalTodoEditButton = document.getElementById("modal-submit-1");
+  const projectsTab = document.querySelectorAll(".project")
 
   // Open a modal and let user create a todo
   firstTable.addEventListener("click", (e) => {
@@ -100,9 +101,17 @@ function initialEventListeners() {
 
     let modal = document.getElementById(`modal-1`);
     modal.classList.toggle("is-active");
-
-
   });
+
+  for (let project of projectsTab) {
+    project.addEventListener("click", (e) => {
+      console.log(e.target.dataset.index)
+      // Create a function that will remove current project
+      // Create a function to render a projectTab depending on dataset.index
+      // Rendering function will need to take todos array and return only arrays with specific dataset.index
+    })
+  }
+
 
 
 }
