@@ -1,14 +1,13 @@
 import { createTodo, displayTodo, todos } from "./todo";
 import { removeProject, createProject, getProjectDetails } from "./projects";
 
+// Open and close modal
 function toggleModal(e) {
   let modal = document.getElementById(`modal-${e.currentTarget.dataset.index}`);
   modal.classList.toggle("is-active");
 }
 
 function initialEventListeners() {
-  // Open and close modal
-
   const firstTable = document.getElementById("tr-0");
   const modalBackground = document.getElementById("modal-background-0");
   const modalCloseButton = document.getElementById("modal-close-0");
@@ -135,8 +134,15 @@ function initialEventListeners() {
     });
   }
 
+  let newProjectOpen = false;
+
+  // Listen to a click on Add New Project and open a form when clicked
   addNewProject.addEventListener("click", () => {
-    getProjectDetails()
+    if (!newProjectOpen){
+      getProjectDetails()
+      newProjectOpen = true
+    }
+    
   })
   
 
