@@ -1,5 +1,5 @@
 import { createTodo, displayTodo, todos } from "./todo";
-import removeProject from "./projects"
+import { removeProject, createProject } from "./projects"
 
 function initialEventListeners() {
   // Open and close modal
@@ -107,6 +107,8 @@ function initialEventListeners() {
   for (let project of projectsTab) {
     project.addEventListener("click", (e) => {
       removeProject()
+      createProject()
+
       console.log(e.target.dataset.index)
       // Create a function that will remove current project
       // Create a function to render a projectTab depending on dataset.index
