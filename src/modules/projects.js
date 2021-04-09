@@ -1,4 +1,3 @@
-// import { populateModal } from "./dom_functions";
 import { toggleModal, addActive } from "./event_listeners";
 
 let projectsArray = [];
@@ -33,8 +32,10 @@ function createProject(index) {
   const thActions = document.createElement("th");
 
   const tBody = document.createElement("tbody");
-  const trNewTask = document.createElement("tr");
-  const tdNewTask = document.createElement("td");
+  const trNewTask = document.createElement("button");
+  const textSpan = document.createElement("span")
+  const iconSpan = document.createElement("span")
+  const icon = document.createElement("i")
 
   column.classList.add("column");
   column.setAttribute("id", "content_column");
@@ -54,12 +55,30 @@ function createProject(index) {
   thActions.innerHTML = "Actions";
 
   tBody.setAttribute("id", "tbody");
+
   trNewTask.setAttribute("id", "tr-0");
   trNewTask.setAttribute("data-index", "0");
-  tdNewTask.innerHTML = "Add a new task";
+  trNewTask.classList.add("button")
+  trNewTask.classList.add("is-info")
+
+  iconSpan.classList.add("icon")
+  iconSpan.classList.add("is-small")
+  icon.classList.add("fas")
+  icon.classList.add("fa-plus-circle")
+
+  textSpan.innerHTML = "Add new task"
+
+
 
   column.appendChild(content);
   content.appendChild(title);
+
+  content.appendChild(trNewTask);
+  trNewTask.appendChild(iconSpan)
+  iconSpan.appendChild(icon)
+  trNewTask.appendChild(textSpan)
+
+
   content.appendChild(table);
 
   table.appendChild(thead);
@@ -70,9 +89,8 @@ function createProject(index) {
   tr.appendChild(thDueDate);
   tr.appendChild(thActions);
 
+
   table.appendChild(tBody);
-  tBody.appendChild(trNewTask);
-  trNewTask.appendChild(tdNewTask);
 
   const firstTable = document.getElementById("tr-0");
 
@@ -81,7 +99,7 @@ function createProject(index) {
   });
 }
 
-function Project(name) {
+function Project(name, index) {
   const eventListeners = () => {
     const projectsTab = document.querySelectorAll(".project");
     for (let project of projectsTab) {
@@ -102,16 +120,24 @@ function Project(name) {
       });
     }
   };
-  return { name, eventListeners };
+  return { name, index, eventListeners };
 }
 
-function pushProjects(name) {
-  const project = Project(name);
+function pushProjects(name, index) {
+  const project = Project(name, index);
   projectsArray.push(project);
 }
 
+function addProjectToStorage() {
+  localStorage.setItem("projects", JSON.stringify(projectsArray))
+}
+
 // Function that will populate the project depending on dataset.index 
-function populateProject() {}
+function populateProject() {
+
+}
+
+
 
 // Create a new project tab in menu bar
 function renderProjectTab(i, value) {
@@ -125,12 +151,31 @@ function renderProjectTab(i, value) {
 
   projects.appendChild(li);
   li.appendChild(a);
+
   if (value != "") {
     a.innerHTML = value;
   } else {
     a.innerHTML = "Project";
   }
 }
+
+// Pulls projects from dataStorage and calls function to render them
+function getProjectsFromStorage() {
+  projectsArray.forEach(function (project) {
+      renderProjectTab(project.index, project.name)
+  })
+}
+
+  if (!localStorage.getItem("projects")) {
+    // eslint-disable-next-line no-extra-semi
+  } else {
+    let retrievedData = localStorage.getItem("projects");
+    projectsArray = JSON.parse(retrievedData);
+    console.log(projectsArray);
+    getProjectsFromStorage() 
+    
+  }
+
 
 function getProjectDetails() {
   const projects = document.getElementById("add_new");
@@ -153,6 +198,7 @@ function getProjectDetails() {
   controlButtons.classList.add("control");
   submitButton.classList.add("button");
   submitButton.classList.add("is-primary");
+  submitButton.classList.add("is-fullwidth")
   submitButton.innerHTML = "Add";
 
   projects.prepend(div);
@@ -167,11 +213,12 @@ function getProjectDetails() {
 
   // Listen to a submit button
   submitButton.addEventListener("click", () => {
-    pushProjects(input.value);
+    pushProjects(input.value, projectsArray.length + 2);
     const project = projectsArray[projectsArray.length - 1];
     renderProjectTab(projectsArray.length + 1, project.name);
     projects.childNodes[0].remove();
     project.eventListeners();
+    addProjectToStorage()
     console.log(projectsArray);
   });
 }

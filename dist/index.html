@@ -40,8 +40,8 @@
         <ul class="menu-list" id="created_projects">
 
         </ul>
-        <p id="add_new" class="ml-2 ">
-          <a class="has-text-info has-icons-right" id="add_new_project">Add new Project <span class="icon is-right"><i class="fas fa-plus-circle"></i></span></a>
+        <p id="add_new" class="ml-2 mt-2">
+          <a class="has-text-info has-icons-right" id="add_new_project"><span class="icon is-left"><i class="fas fa-plus-circle"></i></span><span>Add new Project</span> </a>
         </p>
       </aside>
     </div>
@@ -55,6 +55,13 @@
 
         <p class="title">Today</p>
 
+        <button class="button is-info" id="tr-0" data-index="0">
+          <span class="icon is-small">
+            <i class="fas fa-plus-circle"></i>
+          </span>     
+          <span>Add new task</span>
+        </button>
+
         <!--- TABLE WITH TASKS --->
 
         <table class="table is-hoverable">
@@ -67,11 +74,7 @@
             </tr>
           </thead>
           <tbody id="tbody">
-            <tr id="tr-0" data-index="0">
-              <td>
-                Add a new task
-              </td>
-            </tr>
+
 
           </tbody>
         </table>
