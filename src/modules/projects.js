@@ -1,5 +1,5 @@
 // import { populateModal } from "./dom_functions";
-import { toggleModal, removeActive, addActive } from "./event_listeners";
+import { toggleModal, addActive } from "./event_listeners";
 
 let projectsArray = []
 
@@ -90,8 +90,15 @@ function Project(name) {
       project.addEventListener("click", (e) => {
         removeProject(); // Remove all projects from column
         createProject(e); // Creates new projects
-        removeActive();
+        function removeActive() {
+          const projectsTab = document.querySelectorAll(".project");
+          for (let i = 0; i < projectsTab.length; i++) {
+            projectsTab[i].classList.remove("is-active");
+          }
+        }
+        removeActive()
         addActive(e);
+
   
         // Create a function to render a projectTab depending on dataset.index
         // Rendering function will need to take todos array and return only arrays with specific dataset.index
