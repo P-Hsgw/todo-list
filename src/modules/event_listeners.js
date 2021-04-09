@@ -3,20 +3,19 @@ import { removeProject, createProject, getProjectDetails } from "./projects";
 
 const projectsTab = document.querySelectorAll(".project");
 
-  // Remove is-active class from project buttons
-  function removeActive() {
-    for (let i = 0; i < projectsTab.length; i++) {
-      projectsTab[i].classList.remove("is-active");
-    }
+// Remove is-active class from project buttons
+function removeActive() {
+  for (let i = 0; i < projectsTab.length; i++) {
+    projectsTab[i].classList.remove("is-active");
   }
+}
 
-  // Add is-active to selected project button
-  function addActive(index) {
-    if (index.target) {
-      index.target.classList.add("is-active");
-    }
+// Add is-active to selected project button
+function addActive(index) {
+  if (index.target) {
+    index.target.classList.add("is-active");
   }
-
+}
 
 // Open and close modal
 function toggleModal(e) {
@@ -32,7 +31,7 @@ function initialEventListeners() {
   const modalTodoBackground = document.getElementById("modal-background-1");
   const modalTodoCloseButton = document.getElementById("modal-close-1");
   const modalTodoEditButton = document.getElementById("modal-submit-1");
-  const addNewProject = document.getElementById("add_new_project")
+  const addNewProject = document.getElementById("add_new_project");
 
   // Open a modal and let user create a todo
   firstTable.addEventListener("click", (e) => {
@@ -68,14 +67,13 @@ function initialEventListeners() {
     const notes = document.getElementById(
       `notes-${e.currentTarget.dataset.index}`
     ).value;
-    console.log(e.currentTarget.dataset.index)
+    console.log(e.currentTarget.dataset.index);
 
     // Check which project is active and return it's index. Not working on a new projects
 
     createTodo(title, description, dueDate, priority, notes);
     displayTodo();
     toggleModal(e);
-    console.log(todos)
     document.getElementById(`title-${e.currentTarget.dataset.index}`).value =
       "";
     document.getElementById(
@@ -97,7 +95,6 @@ function initialEventListeners() {
     toggleModal(e);
   });
 
-  
   function renderEditedTodo(e) {
     const title = document.getElementById(`title-${e}`);
     const description = document.getElementById(`description-${e}`);
@@ -107,7 +104,6 @@ function initialEventListeners() {
     description.innerHTML = todos[`${e - 1}`].description;
     dueDate.innerHTML = todos[`${e - 1}`].dueDate;
   }
-
 
   // Let user edit specific todo by editing form in a modal
   modalTodoEditButton.addEventListener("click", (e) => {
@@ -129,8 +125,6 @@ function initialEventListeners() {
     modal.classList.toggle("is-active");
   });
 
-
-
   const listeningToProjects = () => {
     for (let project of projectsTab) {
       project.addEventListener("click", (e) => {
@@ -138,25 +132,24 @@ function initialEventListeners() {
         createProject(e); // Creates new projects
         removeActive();
         addActive(e);
-  
+
         // Create a function to render a projectTab depending on dataset.index
         // Rendering function will need to take todos array and return only arrays with specific dataset.index
       });
     }
-  }
+  };
   // Listen to each project button, and run functions on click
-  listeningToProjects()
+  listeningToProjects();
 
   let newProjectOpen = false;
 
   // Listen to a click on Add New Project and open a form when clicked
   addNewProject.addEventListener("click", () => {
-    if (!newProjectOpen){
-      getProjectDetails()
-      newProjectOpen = false
+    if (!newProjectOpen) {
+      getProjectDetails();
+      newProjectOpen = false;
     }
-  })
-
+  });
 }
 
 export { initialEventListeners, toggleModal, removeActive, addActive };

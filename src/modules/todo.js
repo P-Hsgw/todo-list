@@ -37,24 +37,40 @@ const Todo = (title, description, dueDate, priority, notes, projectIndex) => {
       button.setAttribute("data-index", e.currentTarget.dataset.index);
     });
   }
-  return { title, description, dueDate, priority, notes, eventListeners, projectIndex };
+  return {
+    title,
+    description,
+    dueDate,
+    priority,
+    notes,
+    eventListeners,
+    projectIndex,
+  };
 };
 
 // Create todos with Factory function and push them to the array
 function createTodo(title, description, dueDate, priority, notes) {
   const projectsTab = document.querySelectorAll(".project");
 
+  // Check which project is active, and assign projectIndex depending on active
   function checkActive() {
-    let projectIndex = ""
+    let projectIndex = "";
     for (let project of projectsTab) {
       if (project.classList.contains("is-active")) {
-         projectIndex = project.dataset.index
+        projectIndex = project.dataset.index;
       }
     }
-    return projectIndex
+    return projectIndex;
   }
-  
-  const todo = Todo(title, description, dueDate, priority, notes, checkActive());
+
+  const todo = Todo(
+    title,
+    description,
+    dueDate,
+    priority,
+    notes,
+    checkActive()
+  );
   todos.push(todo);
 }
 

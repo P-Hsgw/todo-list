@@ -1,9 +1,7 @@
 // import { populateModal } from "./dom_functions";
 import { toggleModal, addActive } from "./event_listeners";
 
-let projectsArray = []
-
-
+let projectsArray = [];
 
 // Remove current project
 function removeProject() {
@@ -96,98 +94,86 @@ function Project(name) {
             projectsTab[i].classList.remove("is-active");
           }
         }
-        removeActive()
+        removeActive();
         addActive(e);
 
-  
         // Create a function to render a projectTab depending on dataset.index
         // Rendering function will need to take todos array and return only arrays with specific dataset.index
       });
     }
-  }
-  return { name, eventListeners }
+  };
+  return { name, eventListeners };
 }
 
 function pushProjects(name) {
-  const project = Project(name)
-  projectsArray.push(project)
+  const project = Project(name);
+  projectsArray.push(project);
 }
 
-// Function that will populate the project depending on dataset.index
+// Function that will populate the project depending on dataset.index 
 function populateProject() {}
 
 // Create a new project tab in menu bar
-
-// Projects should also be an object, and they should be pushed into an array
-
 function renderProjectTab(i, value) {
-  const projects = document.getElementById("created_projects")
-  const li = document.createElement("li")
-  const a = document.createElement("a")
+  const projects = document.getElementById("created_projects");
+  const li = document.createElement("li");
+  const a = document.createElement("a");
 
+  a.classList.add("project");
+  a.setAttribute("data-index", i);
+  a.setAttribute("id", `project-${i}`);
 
-  a.classList.add("project")
-  a.setAttribute("data-index", i)
-  a.setAttribute("id", `project-${i}`)
-
-  projects.appendChild(li)
-  li.appendChild(a)
+  projects.appendChild(li);
+  li.appendChild(a);
   if (value != "") {
     a.innerHTML = value;
   } else {
-    a.innerHTML = "Project"
+    a.innerHTML = "Project";
   }
-  
-
-  
 }
 
+function getProjectDetails() {
+  const projects = document.getElementById("add_new");
+  const div = document.createElement("div");
+  const fieldInput = document.createElement("div");
+  const controlInput = document.createElement("div");
+  const input = document.createElement("input");
+  const fieldButtons = document.createElement("div");
+  const controlButtons = document.createElement("div");
+  const submitButton = document.createElement("button");
 
-function getProjectDetails () {
-  const projects = document.getElementById("add_new")
-  const div = document.createElement("div")
-  const fieldInput = document.createElement("div")
-  const controlInput = document.createElement("div")
-  const input = document.createElement("input")
-  const fieldButtons = document.createElement("div")
-  const controlButtons = document.createElement("div")
-  const submitButton = document.createElement("button")
-  
+  div.setAttribute("id", "form-wrapper");
+  fieldInput.classList.add("field");
+  controlInput.classList.add("control");
+  input.classList.add("input");
+  input.setAttribute("type", "text");
+  input.setAttribute("placeholder", "Project name");
+  input.setAttribute("id", "input-0");
+  fieldButtons.classList.add("field");
+  controlButtons.classList.add("control");
+  submitButton.classList.add("button");
+  submitButton.classList.add("is-primary");
+  submitButton.innerHTML = "Add";
 
-  div.setAttribute("id", "form-wrapper")
-  fieldInput.classList.add("field")
-  controlInput.classList.add("control")
-  input.classList.add("input")
-  input.setAttribute("type", "text")
-  input.setAttribute("placeholder", "Project name")
-  input.setAttribute("id", "input-0")
-  fieldButtons.classList.add("field")
-  controlButtons.classList.add("control")
-  submitButton.classList.add("button")
-  submitButton.classList.add("is-primary")
-  submitButton.innerHTML = "Add"
-  
-  projects.prepend(div)
-  div.appendChild(fieldInput)
-  div.appendChild(fieldButtons)
+  projects.prepend(div);
+  div.appendChild(fieldInput);
+  div.appendChild(fieldButtons);
 
-  fieldInput.appendChild(controlInput)
-  controlInput.appendChild(input)
+  fieldInput.appendChild(controlInput);
+  controlInput.appendChild(input);
 
-  fieldButtons.appendChild(controlButtons)
-  controlButtons.appendChild(submitButton)
+  fieldButtons.appendChild(controlButtons);
+  controlButtons.appendChild(submitButton);
 
   // Listen to a submit button
   submitButton.addEventListener("click", () => {
-    pushProjects(input.value)
-    const project = projectsArray[projectsArray.length - 1]
-    renderProjectTab(projectsArray.length +1, project.name)
-    projects.childNodes[0].remove()
-    project.eventListeners()
-    console.log(projectsArray)
-  })
-
+    pushProjects(input.value);
+    const project = projectsArray[projectsArray.length - 1];
+    renderProjectTab(projectsArray.length + 1, project.name);
+    projects.childNodes[0].remove();
+    project.eventListeners();
+    console.log(projectsArray);
+  });
 }
-
 
 export { removeProject, createProject, getProjectDetails };
