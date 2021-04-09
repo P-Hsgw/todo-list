@@ -86,7 +86,6 @@ function createProject(index) {
 function Project(name) {
   const eventListeners = () => {
     const projectsTab = document.querySelectorAll(".project");
-    
     for (let project of projectsTab) {
       project.addEventListener("click", (e) => {
         removeProject(); // Remove all projects from column
@@ -133,7 +132,12 @@ function renderProjectTab(i, value) {
 
   projects.appendChild(li)
   li.appendChild(a)
-  a.innerHTML = value;
+  if (value != "") {
+    a.innerHTML = value;
+  } else {
+    a.innerHTML = "Project"
+  }
+  
 
   
 }
