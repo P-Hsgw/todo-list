@@ -68,10 +68,14 @@ function initialEventListeners() {
     const notes = document.getElementById(
       `notes-${e.currentTarget.dataset.index}`
     ).value;
+    console.log(e.currentTarget.dataset.index)
+
+    // Check which project is active and return it's index. Not working on a new projects
 
     createTodo(title, description, dueDate, priority, notes);
     displayTodo();
     toggleModal(e);
+    console.log(todos)
     document.getElementById(`title-${e.currentTarget.dataset.index}`).value =
       "";
     document.getElementById(

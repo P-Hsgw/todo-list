@@ -86,6 +86,7 @@ function createProject(index) {
 function Project(name) {
   const eventListeners = () => {
     const projectsTab = document.querySelectorAll(".project");
+    
     for (let project of projectsTab) {
       project.addEventListener("click", (e) => {
         removeProject(); // Remove all projects from column

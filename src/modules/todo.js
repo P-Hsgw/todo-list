@@ -4,7 +4,7 @@ import { createTable, populateModal } from "./dom_functions";
 let todos = [];
 
 // Create todos with factory functions
-const Todo = (title, description, dueDate, priority, notes) => {
+const Todo = (title, description, dueDate, priority, notes, projectIndex) => {
   function eventListeners() {
     // Listen to specific remove icon
     const iconRemove = document.getElementById(`remove-${todos.length}`);
@@ -37,12 +37,24 @@ const Todo = (title, description, dueDate, priority, notes) => {
       button.setAttribute("data-index", e.currentTarget.dataset.index);
     });
   }
-  return { title, description, dueDate, priority, notes, eventListeners };
+  return { title, description, dueDate, priority, notes, eventListeners, projectIndex };
 };
 
 // Create todos with Factory function and push them to the array
 function createTodo(title, description, dueDate, priority, notes) {
-  const todo = Todo(title, description, dueDate, priority, notes);
+  const projectsTab = document.querySelectorAll(".project");
+
+  function checkActive() {
+    let projectIndex = ""
+    for (let project of projectsTab) {
+      if (project.classList.contains("is-active")) {
+         projectIndex = project.dataset.index
+      }
+    }
+    return projectIndex
+  }
+  
+  const todo = Todo(title, description, dueDate, priority, notes, checkActive());
   todos.push(todo);
 }
 
