@@ -4,7 +4,7 @@ import { createTable, populateModal } from "./dom_functions";
 let todos = [];
 
 // Create todos with factory functions
-const Todo = (title, description, dueDate, priority, notes, projectIndex) => {
+const Todo = (title, description, dueDate, priority, notes, projectIndex, ID) => {
   function eventListeners() {
     // Listen to specific remove icon
     const iconRemove = document.getElementById(`remove-${todos.length}`);
@@ -45,6 +45,7 @@ const Todo = (title, description, dueDate, priority, notes, projectIndex) => {
     notes,
     eventListeners,
     projectIndex,
+    ID
   };
 };
 
@@ -63,13 +64,19 @@ function createTodo(title, description, dueDate, priority, notes) {
     return projectIndex;
   }
 
+  function getID() {
+    let todoID = todos.length
+    return todoID
+  }
+
   const todo = Todo(
     title,
     description,
     dueDate,
     priority,
     notes,
-    checkActive()
+    checkActive(),
+    getID()
   );
   todos.push(todo);
 }
@@ -80,13 +87,18 @@ function displayTodo() {
   const i = todos.length;
   createTable(todo.title, todo.description, todo.dueDate, i); // Use a function to create tables
   todo.eventListeners(); // Run event listener on a todo
+  console.log(todo)
 }
 
 function grabTodos(e) {
   for (let index = 0; index < todos.length; index++) {
     if(todos[index].projectIndex == e) {
       createTable(todos[index].title, todos[index].description, todos[index].dueDate, index + 1); // Use a function to create tables
-      todos[index].eventListeners(); // Run event listener on a todo
+
+
+      // todos[index].eventListeners()
+      
+      // Run event listener on a todo
     }
   }
 }

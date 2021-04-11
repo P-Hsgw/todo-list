@@ -19,9 +19,7 @@ function createProject(index) {
   const content = document.createElement("div");
 
   const title = document.createElement("p");
-  const projectTitle = document.getElementById(
-    `project-${index.target.dataset.index}`
-  );
+  const projectTitle = document.getElementById(`project-${index.target.dataset.index}`);
 
   const table = document.createElement("table");
   const thead = document.createElement("thead");
@@ -68,8 +66,6 @@ function createProject(index) {
 
   textSpan.innerHTML = "Add new task"
 
-
-
   column.appendChild(content);
   content.appendChild(title);
 
@@ -77,7 +73,6 @@ function createProject(index) {
   trNewTask.appendChild(iconSpan)
   iconSpan.appendChild(icon)
   trNewTask.appendChild(textSpan)
-
 
   content.appendChild(table);
 
@@ -133,10 +128,7 @@ function addProjectToStorage() {
 }
 
 // Function that will populate the project depending on dataset.index 
-function populateProject() {
-
-
-}
+// function populateProject() {
 
 
 // Create a new project tab in menu bar
