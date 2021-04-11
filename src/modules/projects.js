@@ -135,8 +135,8 @@ function addProjectToStorage() {
 // Function that will populate the project depending on dataset.index 
 function populateProject() {
 
-}
 
+}
 
 
 // Create a new project tab in menu bar
@@ -219,7 +219,7 @@ function getProjectDetails() {
     projects.childNodes[0].remove();
     project.eventListeners();
     addProjectToStorage()
-    console.log(projectsArray);
+
   });
 }
 

@@ -82,4 +82,13 @@ function displayTodo() {
   todo.eventListeners(); // Run event listener on a todo
 }
 
-export { createTodo, displayTodo, todos };
+function grabTodos(e) {
+  for (let index = 0; index < todos.length; index++) {
+    if(todos[index].projectIndex == e) {
+      createTable(todos[index].title, todos[index].description, todos[index].dueDate, index + 1); // Use a function to create tables
+      todos[index].eventListeners(); // Run event listener on a todo
+    }
+  }
+}
+
+export { createTodo, displayTodo, todos, grabTodos };

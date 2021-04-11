@@ -1,4 +1,4 @@
-import { createTodo, displayTodo, todos } from "./todo";
+import { createTodo, displayTodo, todos, grabTodos } from "./todo";
 import { removeProject, createProject, getProjectDetails } from "./projects";
 
 const projectsTab = document.querySelectorAll(".project");
@@ -69,11 +69,11 @@ function initialEventListeners() {
     ).value;
     console.log(e.currentTarget.dataset.index);
 
-    // Check which project is active and return it's index. Not working on a new projects
-
     createTodo(title, description, dueDate, priority, notes);
     displayTodo();
     toggleModal(e);
+
+    // Reset modal values
     document.getElementById(`title-${e.currentTarget.dataset.index}`).value =
       "";
     document.getElementById(
@@ -125,13 +125,17 @@ function initialEventListeners() {
     modal.classList.toggle("is-active");
   });
 
+
   const listeningToProjects = () => {
     for (let project of projectsTab) {
       project.addEventListener("click", (e) => {
         removeProject(); // Remove all projects from column
         createProject(e); // Creates new projects
-        removeActive();
-        addActive(e);
+        removeActive(); // Removes isactive from previous project
+        addActive(e); // Adds isactive on current project
+        grabTodos(e.currentTarget.dataset.index)
+
+
 
         // Create a function to render a projectTab depending on dataset.index
         // Rendering function will need to take todos array and return only arrays with specific dataset.index
@@ -147,7 +151,6 @@ function initialEventListeners() {
   addNewProject.addEventListener("click", () => {
     if (!newProjectOpen) {
       getProjectDetails();
-      newProjectOpen = false;
     }
   });
 }
