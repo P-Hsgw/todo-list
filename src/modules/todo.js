@@ -13,7 +13,7 @@ const Todo = (title, description, dueDate, priority, notes, projectIndex, ID) =>
         `tr-${e.currentTarget.dataset.index}`
       );
       // todos.splice(e.currentTarget.dataset.index - 1); // Remove todo from the array
-      delete todos[e.currentTarget.dataset.index - 1]; // Remove todo from the array - solution for not working arrays
+      delete parseInt(todos[ID].ID+1); // Remove todo from the array - solution for not working arrays
       table.remove(); // Remove specific table with todo from the page
     });
 
@@ -94,11 +94,11 @@ function grabTodos(e) {
   for (let index = 0; index < todos.length; index++) {
     if(todos[index].projectIndex == e) {
       createTable(todos[index].title, todos[index].description, todos[index].dueDate, index + 1); // Use a function to create tables
-
-
       todos[index].eventListeners()
       
       // Run event listener on a todo
+    } else {
+      console.log(todos)
     }
   }
 }

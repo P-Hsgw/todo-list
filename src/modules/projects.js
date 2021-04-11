@@ -95,7 +95,7 @@ function createProject(index) {
 }
 
 function Project(name, index) {
-  const eventListeners = () => {
+  const eventProjectListeners = () => {
     const projectsTab = document.querySelectorAll(".project");
     for (let project of projectsTab) {
       project.addEventListener("click", (e) => {
@@ -115,7 +115,7 @@ function Project(name, index) {
       });
     }
   };
-  return { name, index, eventListeners };
+  return { name, index, eventProjectListeners };
 }
 
 function pushProjects(name, index) {
@@ -209,7 +209,7 @@ function getProjectDetails() {
     const project = projectsArray[projectsArray.length - 1];
     renderProjectTab(projectsArray.length + 1, project.name);
     projects.childNodes[0].remove();
-    project.eventListeners();
+    // project.eventProjectListeners();
     addProjectToStorage()
 
   });
