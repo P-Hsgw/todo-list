@@ -1,6 +1,11 @@
 import { toggleModal, addActive } from "./event_listeners";
 
-let projectsArray = [];
+let projectsArray = [
+  {
+    "name" : "blabla",
+    "index" : 2
+}
+];
 
 // Remove current project
 function removeProject() {
@@ -209,7 +214,7 @@ function getProjectDetails() {
     const project = projectsArray[projectsArray.length - 1];
     renderProjectTab(projectsArray.length + 1, project.name);
     projects.childNodes[0].remove();
-    // project.eventProjectListeners();
+    project.eventProjectListeners();
     addProjectToStorage()
 
   });
