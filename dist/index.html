@@ -99,14 +99,14 @@
         <div class="field">
           <label class="label">Title</label>
           <div class="control" id="control-0">
-            <input class="input" name="title" type="text" id="title-0" placeholder="Title input" data-index="0">
+            <input class="input" name="title" type="text" id="title-0" placeholder="Title input" data-index="0" required>
           </div>
+          <p class="help">This field is required</p>
         </div>
-
         <div class="field">
           <label class="label">Description</label>
           <div class="control has-icons-left has-icons-right">
-            <input class="input" type="text" id="description-0" placeholder="Description input" data-index="0">
+            <input class="input" type="text" id="description-0" placeholder="Description input" data-index="0" required>
             <span class="icon is-small is-left">
               <i class="fas fa-user"></i>
             </span>
@@ -114,13 +114,15 @@
               <i class="fas fa-check"></i>
             </span>
           </div>
+          <p class="help">This field is required</p>
         </div>
 
         <div class="field">
           <label class="label">Due Date</label>
           <div class="control">
-            <input class="input" type="date" placeholder="Due Date" id="due_date-0" data-index="0">
+            <input class="input" type="date" placeholder="Due Date" id="due_date-0" data-index="0" required>
           </div>
+          <p class="help">This field is required</p>
         </div>
 
         <div class="field">
@@ -146,6 +148,7 @@
           <div class="control">
             <button class="button is-link" id="modal-submit-0" data-index="0">Submit</button>
           </div>
+          <p class="help is-danger" id="requird_prompt" style="display: none;">Please fill out required fields</p>
         </div>
       </div>
       <button class="modal-close is-large" aria-label="close" id="modal-close-0" data-index="0"></button>

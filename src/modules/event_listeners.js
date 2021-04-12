@@ -38,6 +38,7 @@ function initialEventListeners() {
   const modalTodoCloseButton = document.getElementById("modal-close-1");
   const modalTodoEditButton = document.getElementById("modal-submit-1");
   const addNewProject = document.getElementById("add_new_project");
+  const requiredPrompt = document.getElementById("requird_prompt");
 
   // Open a modal and let user create a todo
   firstTable.addEventListener("click", (e) => {
@@ -47,11 +48,13 @@ function initialEventListeners() {
   // Let user close a modal with table on a background click
   modalBackground.addEventListener("click", (e) => {
     toggleModal(e);
+    requiredPrompt.style.display = "none";
   });
 
   // Let user close a modal with table on a button click
   modalCloseButton.addEventListener("click", (e) => {
     toggleModal(e);
+    requiredPrompt.style.display = "none";
   });
 
   // listen to class of all new TRs, and depending on a choice, display content of specific todo
@@ -74,21 +77,37 @@ function initialEventListeners() {
       `notes-${e.currentTarget.dataset.index}`
     ).value;
 
-    createTodo(title, description, dueDate, priority, notes);
-    addTodoToStorage();
-    displayTodo();
-    toggleModal(e);
+    if (
+      document
+        .getElementById(`title-${e.currentTarget.dataset.index}`)
+        .checkValidity() &&
+      document
+        .getElementById(`description-${e.currentTarget.dataset.index}`)
+        .checkValidity() &&
+      document
+        .getElementById(`due_date-${e.currentTarget.dataset.index}`)
+        .checkValidity()
+    ) {
+      createTodo(title, description, dueDate, priority, notes);
+      addTodoToStorage();
+      displayTodo();
+      toggleModal(e);
 
-    // Reset modal values
-    document.getElementById(`title-${e.currentTarget.dataset.index}`).value =
-      "";
-    document.getElementById(
-      `description-${e.currentTarget.dataset.index}`
-    ).value = "";
-    document.getElementById(`due_date-${e.currentTarget.dataset.index}`).value;
-    document.getElementById(`select-${e.currentTarget.dataset.index}`).value;
-    document.getElementById(`notes-${e.currentTarget.dataset.index}`).value =
-      "";
+      // Reset modal values
+      document.getElementById(`title-${e.currentTarget.dataset.index}`).value =
+        "";
+      document.getElementById(
+        `description-${e.currentTarget.dataset.index}`
+      ).value = "";
+      document.getElementById(`due_date-${e.currentTarget.dataset.index}`)
+        .value;
+      document.getElementById(`select-${e.currentTarget.dataset.index}`).value;
+      document.getElementById(`notes-${e.currentTarget.dataset.index}`).value =
+        "";
+      requiredPrompt.style.display = "none";
+    } else {
+      requiredPrompt.style.display = "inline";
+    }
   });
 
   // Let user close a modal with content on a background click
