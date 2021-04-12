@@ -2,9 +2,9 @@ import { toggleModal, addActive } from "./event_listeners";
 
 let projectsArray = [
   {
-    "name" : "blabla",
-    "index" : 2
-}
+    name: "blabla",
+    index: 2,
+  },
 ];
 
 // Remove current project
@@ -24,7 +24,9 @@ function createProject(index) {
   const content = document.createElement("div");
 
   const title = document.createElement("p");
-  const projectTitle = document.getElementById(`project-${index.target.dataset.index}`);
+  const projectTitle = document.getElementById(
+    `project-${index.target.dataset.index}`
+  );
 
   const table = document.createElement("table");
   const thead = document.createElement("thead");
@@ -36,9 +38,9 @@ function createProject(index) {
 
   const tBody = document.createElement("tbody");
   const trNewTask = document.createElement("button");
-  const textSpan = document.createElement("span")
-  const iconSpan = document.createElement("span")
-  const icon = document.createElement("i")
+  const textSpan = document.createElement("span");
+  const iconSpan = document.createElement("span");
+  const icon = document.createElement("i");
 
   column.classList.add("column");
   column.setAttribute("id", "content_column");
@@ -61,23 +63,23 @@ function createProject(index) {
 
   trNewTask.setAttribute("id", "tr-0");
   trNewTask.setAttribute("data-index", "0");
-  trNewTask.classList.add("button")
-  trNewTask.classList.add("is-info")
+  trNewTask.classList.add("button");
+  trNewTask.classList.add("is-info");
 
-  iconSpan.classList.add("icon")
-  iconSpan.classList.add("is-small")
-  icon.classList.add("fas")
-  icon.classList.add("fa-plus-circle")
+  iconSpan.classList.add("icon");
+  iconSpan.classList.add("is-small");
+  icon.classList.add("fas");
+  icon.classList.add("fa-plus-circle");
 
-  textSpan.innerHTML = "Add new task"
+  textSpan.innerHTML = "Add new task";
 
   column.appendChild(content);
   content.appendChild(title);
 
   content.appendChild(trNewTask);
-  trNewTask.appendChild(iconSpan)
-  iconSpan.appendChild(icon)
-  trNewTask.appendChild(textSpan)
+  trNewTask.appendChild(iconSpan);
+  iconSpan.appendChild(icon);
+  trNewTask.appendChild(textSpan);
 
   content.appendChild(table);
 
@@ -88,7 +90,6 @@ function createProject(index) {
   tr.appendChild(thDescription);
   tr.appendChild(thDueDate);
   tr.appendChild(thActions);
-
 
   table.appendChild(tBody);
 
@@ -105,7 +106,9 @@ function Project(name, index) {
     for (let project of projectsTab) {
       project.addEventListener("click", (e) => {
         removeProject(); // Remove all projects from column
+
         createProject(e); // Creates new projects
+
         function removeActive() {
           const projectsTab = document.querySelectorAll(".project");
           for (let i = 0; i < projectsTab.length; i++) {
@@ -114,9 +117,6 @@ function Project(name, index) {
         }
         removeActive();
         addActive(e);
-
-        // Create a function to render a projectTab depending on dataset.index
-        // Rendering function will need to take todos array and return only arrays with specific dataset.index
       });
     }
   };
@@ -129,12 +129,11 @@ function pushProjects(name, index) {
 }
 
 function addProjectToStorage() {
-  localStorage.setItem("projects", JSON.stringify(projectsArray))
+  localStorage.setItem("projects", JSON.stringify(projectsArray));
 }
 
-// Function that will populate the project depending on dataset.index 
+// Function that will populate the project depending on dataset.index
 // function populateProject() {
-
 
 // Create a new project tab in menu bar
 function renderProjectTab(i, value) {
@@ -159,20 +158,17 @@ function renderProjectTab(i, value) {
 // Pulls projects from dataStorage and calls function to render them
 function getProjectsFromStorage() {
   projectsArray.forEach(function (project) {
-      renderProjectTab(project.index, project.name)
-  })
+    renderProjectTab(project.index, project.name);
+  });
 }
 
-  if (!localStorage.getItem("projects")) {
-    // eslint-disable-next-line no-extra-semi
-  } else {
-    let retrievedData = localStorage.getItem("projects");
-    projectsArray = JSON.parse(retrievedData);
-    console.log(projectsArray);
-    getProjectsFromStorage() 
-    
-  }
-
+if (!localStorage.getItem("projects")) {
+  // eslint-disable-next-line no-extra-semi
+} else {
+  let retrievedData = localStorage.getItem("projects");
+  projectsArray = JSON.parse(retrievedData);
+  getProjectsFromStorage();
+}
 
 function getProjectDetails() {
   const projects = document.getElementById("add_new");
@@ -195,7 +191,7 @@ function getProjectDetails() {
   controlButtons.classList.add("control");
   submitButton.classList.add("button");
   submitButton.classList.add("is-primary");
-  submitButton.classList.add("is-fullwidth")
+  submitButton.classList.add("is-fullwidth");
   submitButton.innerHTML = "Add";
 
   projects.prepend(div);
@@ -215,8 +211,7 @@ function getProjectDetails() {
     renderProjectTab(projectsArray.length + 1, project.name);
     projects.childNodes[0].remove();
     project.eventProjectListeners();
-    addProjectToStorage()
-
+    addProjectToStorage();
   });
 }
 

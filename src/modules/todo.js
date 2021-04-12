@@ -4,21 +4,32 @@ import { createTable, populateModal } from "./dom_functions";
 let todos = [];
 
 // Create todos with factory functions
-const Todo = (title, description, dueDate, priority, notes, projectIndex, ID) => {
+const Todo = (
+  title,
+  description,
+  dueDate,
+  priority,
+  notes,
+  projectIndex,
+  ID
+) => {
   function eventListeners() {
     // Listen to specific remove icon
-    const iconRemove = document.getElementById(`remove-${parseInt(todos[ID].ID+1)}`);
+    const iconRemove = document.getElementById(
+      `remove-${parseInt(todos[ID].ID + 1)}`
+    );
     iconRemove.addEventListener("click", (e) => {
       const table = document.getElementById(
         `tr-${e.currentTarget.dataset.index}`
       );
-      // todos.splice(e.currentTarget.dataset.index - 1); // Remove todo from the array
-      delete parseInt(todos[ID].ID+1); // Remove todo from the array - solution for not working arrays
-      table.remove(); // Remove specific table with todo from the page
+      delete parseInt(todos[ID].ID + 1);
+      table.remove();
     });
 
     // Listen to specific info icon
-    const iconInfo = document.getElementById(`details-${parseInt(todos[ID].ID+1)}`);
+    const iconInfo = document.getElementById(
+      `details-${parseInt(todos[ID].ID + 1)}`
+    );
 
     iconInfo.addEventListener("click", (e) => {
       const modal = document.getElementById(`modal-1`);
@@ -31,7 +42,7 @@ const Todo = (title, description, dueDate, priority, notes, projectIndex, ID) =>
         todos[e.currentTarget.dataset.index - 1].priority,
         todos[e.currentTarget.dataset.index - 1].notes
       );
-      console.log("todos id " + parseInt(todos[ID].ID+1));
+      console.log("todos id " + parseInt(todos[ID].ID + 1));
 
       // Update button data-index to match chosen todo
       button.setAttribute("data-index", e.currentTarget.dataset.index);
@@ -45,7 +56,7 @@ const Todo = (title, description, dueDate, priority, notes, projectIndex, ID) =>
     notes,
     eventListeners,
     projectIndex,
-    ID
+    ID,
   };
 };
 
@@ -65,8 +76,8 @@ function createTodo(title, description, dueDate, priority, notes) {
   }
 
   function getID() {
-    let todoID = todos.length
-    return todoID
+    let todoID = todos.length;
+    return todoID;
   }
 
   const todo = Todo(
@@ -87,20 +98,59 @@ function displayTodo() {
   const i = todos.length;
   createTable(todo.title, todo.description, todo.dueDate, i); // Use a function to create tables
   todo.eventListeners(); // Run event listener on a todo
-  console.log(todo)
 }
 
 function grabTodos(e) {
   for (let index = 0; index < todos.length; index++) {
-    if(todos[index].projectIndex == e) {
-      createTable(todos[index].title, todos[index].description, todos[index].dueDate, index + 1); // Use a function to create tables
-      todos[index].eventListeners()
-      
-      // Run event listener on a todo
-    } else {
-      console.log(todos)
+    if (todos[index].projectIndex == e) {
+      createTable(
+        todos[index].title,
+        todos[index].description,
+        todos[index].dueDate,
+        index + 1
+      ); // Use a function to create tables
+      todos[index].eventListeners();
     }
   }
 }
 
-export { createTodo, displayTodo, todos, grabTodos };
+function addTodoToStorage() {
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+// function checkIndex() {
+//   const projectsTab = document.querySelectorAll(".project");
+//   let projectIndex = ""
+//   for (let project of projectsTab) {
+//     if (project.classList.contains("is-active")) {
+//       projectIndex = project.dataset.index;
+//     }
+//   }
+//   return projectIndex
+// }
+
+// function grabTodosFromStorage(todo) {
+//   if(todo.projectIndex == checkIndex()) {
+//     createTable(todo.title, todo.description, todo.dueDate, parseInt(todo.ID+1)); // Use a function to create tables
+//     todo.eventListeners()
+//     console.log("berro")
+//         } else {
+//     console.log(todos)
+// }
+// }
+
+// function getTodosFromStorage() {
+//   todos.forEach(function (todo) {
+//     grabTodosFromStorage(todo)
+//   })
+// }
+
+// if (!localStorage.getItem("todos")) {
+//   // eslint-disable-next-line no-extra-semi
+// } else {
+//   let retrievedData = localStorage.getItem("todos");
+//   todos = JSON.parse(retrievedData);
+//   getTodosFromStorage()
+// }
+
+export { createTodo, displayTodo, todos, grabTodos, addTodoToStorage };
